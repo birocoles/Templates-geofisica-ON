@@ -669,7 +669,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   ao Programa de P{\' o}s-gradua{\c c}{\~ a}o em \local@progname\ do
   \local@universityname, como parte dos requisitos
   necess{\' a}rios {\` a} obten{\c c}{\~ a}o do \ifthenelse{\boolean{doutboolean}}{Grau}{T{\' i}tulo}
-  de \local@degname\ em Ci\^ encias.}
+  de \local@degname\ em {\local@progname}.}
 }
 \newcommand\frontpage@maintext{
   \noindent {\MakeUppercase\local@doctype}
@@ -679,7 +679,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   NACIONAL/MCTI COMO PARTE DOS REQUISITOS
   NECESS{\' A}RIOS PARA A OBTEN{\c C}{\~ A}O DO
   \ifthenelse{\boolean{doutboolean}}{GRAU}{T{\' I}TULO} DE
-  {\MakeUppercase\local@degname} EM CI{\^E}NCIAS EM
+  {\MakeUppercase\local@degname} EM 
   {\MakeUppercase\local@progname.\par}}%
 }
 \newcommand\frontpage@bottomtext{%
@@ -694,12 +694,12 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \sloppy\nohyphens{ao Programa de P{\' o}s-gradua{\c c}{\~ a}o em Geof{\'i}sica do Observat{\' o}rio Nacional/MCTI como parte dos requisitos
   necess{\' a}rios para a obten{\c c}{\~ a}o do
   \ifthenelse{\boolean{doutboolean}}{grau}{t{\' i}tulo} de
-  \local@degname\ em Ci{\^ e}ncias (\local@degree)}
+  \local@degname\ em {\local@progname}}
 }
 \newcommand\foreignabstract@toptext{%
   \noindent \sloppy\nohyphens{Abstract of \foreign@doctype\ presented to
   Observat{\' o}rio Nacional/MCTI as a partial fulfillment of the requirements for the
-  degree of \foreign@degname\ of Science (\foreign@degree)}
+  degree of \foreign@degname\ of {\foreign@progname}}
 }
 %%
 %%
