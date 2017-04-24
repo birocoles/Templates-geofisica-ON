@@ -198,7 +198,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \setlength\baselineskip{0pt}
   \setlength\parskip{1mm}
   \makebox[20mm][c]{\hspace{12.9cm}\includegraphics[width=5.0cm]{ON-logo}
-  \hspace{6.0cm}\includegraphics[width=4.0cm]{MCTI-logo}}
+  \hspace{6.0cm}\includegraphics[width=4.0cm]{DIPPG-logo}}
   \end{flushleft}
   \vspace{1.05cm}
   \begin{center}
@@ -304,7 +304,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \hypersetup{%
   pdfauthor={\@authname\ \@authsurn},
   pdftitle={\local@title},
-  pdfsubject={\local@doctype\ de \@degreename\ em \local@progname\ da ON/MCTI},
+  pdfsubject={\local@doctype\ de \@degreename\ em \local@progname\ da ON},
   pdfcreator={LaTeX with ONTeX toolkit},
   breaklinks={true},
   raiselinks={true},
@@ -320,7 +320,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
       \noindent\sloppy\nohyphens\@authsurn,
       \nohyphens\@authname\par
       \nohyphens{\local@title/\@authname\ \@authsurn. -- \local@cityname:
-      ON/MCTI, \number\year.}\par
+      ON, \number\year.}\par
       \pageref{front:pageno},
       \pageref{LastPage}
       p.\@ifundefined{r@cat:lofflag}{}{\pageref{cat:lofflag}} $29,7$cm.\par
@@ -354,7 +354,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
         \the\toks@
       \end{tabularx}}\par
       \nohyphens{\local@doctype\ ({\MakeLowercase\@degreename}) --
-      ON/MCTI/Programa de P{\' o}s-gradua{\c c}{\~ a}o em \local@progname,
+      ON/Programa de P{\' o}s-gradua{\c c}{\~ a}o em \local@progname,
       \number\year.}\par
       \bibname: p. \pageref{bib:begin} -- \pageref{bib:end}.\par
       \count1=0
@@ -657,7 +657,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 }{%
   \newcommand\local@approvedname{Examinada por}%
 }
-\newcommand\local@universityname{Observat{\' o}rio Nacional/MCTI}
+\newcommand\local@universityname{Observat{\' o}rio Nacional}
 \newcommand\local@progstring{Programa}
 \newcommand\foreign@progstring{Program}
 \newcommand\local@cityname{Rio de Janeiro}
@@ -676,7 +676,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \ifthenelse{\boolean{maledoc}}{SUBMETIDO}{SUBMETIDA}
   \sloppy\nohyphens{AO PROGRAMA DE P{\' O}S-GRADUA{\c C}{\~ A}O EM
   {\MakeUppercase\local@progname} DO OBSERVAT{\' O}RIO
-  NACIONAL/MCTI COMO PARTE DOS REQUISITOS
+  NACIONAL COMO PARTE DOS REQUISITOS
   NECESS{\' A}RIOS PARA A OBTEN{\c C}{\~ A}O DO
   \ifthenelse{\boolean{doutboolean}}{GRAU}{T{\' I}TULO} DE
   {\MakeUppercase\local@degname} EM 
@@ -691,14 +691,14 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \newcommand\abstract@toptext{%
   \noindent Resumo \ifthenelse{\boolean{maledoc}}{do}{da}
   \local@doctype\ \ifthenelse{\boolean{maledoc}}{apresentado}{apresentada}
-  \sloppy\nohyphens{ao Programa de P{\' o}s-gradua{\c c}{\~ a}o em Geof{\'i}sica do Observat{\' o}rio Nacional/MCTI como parte dos requisitos
+  \sloppy\nohyphens{ao Programa de P{\' o}s-gradua{\c c}{\~ a}o em Geof{\'i}sica do Observat{\' o}rio Nacional como parte dos requisitos
   necess{\' a}rios para a obten{\c c}{\~ a}o do
   \ifthenelse{\boolean{doutboolean}}{grau}{t{\' i}tulo} de
   \local@degname\ em {\local@progname}}
 }
 \newcommand\foreignabstract@toptext{%
   \noindent \sloppy\nohyphens{Abstract of \foreign@doctype\ presented to
-  Observat{\' o}rio Nacional/MCTI as a partial fulfillment of the requirements for the
+  Observat{\' o}rio Nacional as a partial fulfillment of the requirements for the
   degree of \foreign@degname\ of {\foreign@progname}}
 }
 %%
