@@ -74,7 +74,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \newboolean{doutboolean}
 \setboolean{doutboolean}{false}
 \DeclareOption{msc}{%
-  \newcommand{\@degree}{M.Sc.}
+  \newcommand{\foreign@degree}{M.Sc.}
   \newcommand{\local@degree}{Me.}
   \newcommand{\@degreename}{Mestrado}
   \newcommand{\local@degname}{Mestre}
@@ -84,7 +84,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \newcommand\foreign@doctype{Dissertation}
 }
 \DeclareOption{dscexam}{%
-  \newcommand{\@degree}{D.Sc.}
+  \newcommand{\foreign@degree}{D.Sc.}
   \newcommand{\local@degree}{Dr.}
   \newcommand{\@degreename}{Doutorado}
   \newcommand{\local@degname}{Doutor}
@@ -94,7 +94,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \newcommand\foreign@doctype{Qualifying Exam}
 }
 \DeclareOption{dsc}{%
-  \newcommand{\@degree}{D.Sc.}
+  \newcommand{\foreign@degree}{D.Sc.}
   \newcommand{\local@degree}{Dr.}
   \newcommand{\@degreename}{Doutorado}
   \newcommand{\local@degname}{Doutor}
@@ -694,12 +694,12 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \sloppy\nohyphens{ao Programa de P{\' o}s-gradua{\c c}{\~ a}o em Geof{\'i}sica do Observat{\' o}rio Nacional/MCTI como parte dos requisitos
   necess{\' a}rios para a obten{\c c}{\~ a}o do
   \ifthenelse{\boolean{doutboolean}}{grau}{t{\' i}tulo} de
-  \local@degname\ em Ci{\^ e}ncias (\@degree)}
+  \local@degname\ em Ci{\^ e}ncias (\local@degree)}
 }
 \newcommand\foreignabstract@toptext{%
   \noindent \sloppy\nohyphens{Abstract of \foreign@doctype\ presented to
   Observat{\' o}rio Nacional/MCTI as a partial fulfillment of the requirements for the
-  degree of \foreign@degname\ of Science (\@degree)}
+  degree of \foreign@degname\ of Science (\foreign@degree)}
 }
 %%
 %%
