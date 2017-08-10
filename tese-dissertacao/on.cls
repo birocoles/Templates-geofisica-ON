@@ -73,6 +73,15 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \setboolean{maledoc}{false}
 \newboolean{doutboolean}
 \setboolean{doutboolean}{false}
+\DeclareOption{report}{%
+  \newcommand{\@degree}{M.Sc. ou D.Sc.}
+  \newcommand{\@degreename}{Mestrado ou Doutorado}
+  \newcommand{\local@degname}{Mestre ou Doutor}
+  \newcommand{\foreign@degname}{Master or Doctor}
+  \setboolean{maledoc}{true}
+  \newcommand\local@doctype{Relat\' orio}
+  \newcommand\foreign@doctype{Report}
+}
 \DeclareOption{msc}{%
   \newcommand{\foreign@degree}{M.Sc.}
   \newcommand{\local@degree}{Me.}
