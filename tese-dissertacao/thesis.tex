@@ -1,6 +1,8 @@
-%\documentclass[msc]{on} %para dissertação de mestrado, descomentar esta linha e comentar a de baixo
-\documentclass[dsc]{on}
-%\documentclass[msc, numbers]{on} %a opção numbers da classe, mostrada nesta linha, é usada para citação por lista numérica em ordem de ocorrência
+%\documentclass[msc]{on} %usar esta para dissertação de mestrado (e comentar as demais linhas com '\documentclass')
+%\documentclass[msc, numbers]{on} %a opção numbers da classe é usada para citação por lista numérica em ordem de ocorrência
+%\documentclass[dsc]{on}
+%\documentclass[dscexam]{on} %para exame de qualificação
+\documentclass[report]{on} %para relatórios
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb}
 \usepackage{hyperref}
@@ -17,20 +19,18 @@
   \title{Título da Tese ou Dissertação}
   \foreigntitle{Thesis Title}
   \author{Nome do Autor}{Sobrenome}
-  \advisor{}{Nome do Orientador}{Sobrenome}{Dr.}
-%  \advisor{}{Nome do Orientador}{Sobrenome}{D.Sc.}
-% Comente as linhas abaixo se não houver coorientador
-  \coadvisor{}{Nome do Primeiro Co-orientador}{Sobrenome}{Dr.}
-%  \coadvisor{}{Nome do Segundo Co-orientador}{Sobrenome}{Dr.}
-%  \coadvisor{}{Nome do Terceiro Co-orientador}{Sobrenome}{Dr.}
+  \advisor{Prof.}{Nome do Orientador}{Sobrenome}{D.Sc.}
+  \coadvisor{Prof.}{Nome do Primeiro Co-orientador}{Sobrenome}{D.Sc.}
+  \coadvisor{Prof.}{Nome do Segundo Co-orientador}{Sobrenome}{Ph.D.}
+%  \coadvisor{Prof.}{Nome do Terceiro Co-orientador}{Sobrenome}{D.Sc.}
 
 
-  \examiner{}{Nome do Primeiro Examinador Sobrenome}{Dr.}
-  \examiner{}{Nome da Segunda Examinadora Sobrenome}{Dr.}
-  \examiner{}{Nome da Terceira Examinadora Sobrenome}{Dr.}
-  \examiner{}{Nome do Quarto Examinador Sobrenome}{Dr.}
-  \examiner{}{Nome do Quinto Examinador Sobrenome}{Dr.}
-  \program{GEO}
+  \examiner{Prof.}{Nome do Primeiro Examinador Sobrenome}{D.Sc.}
+  \examiner{Prof.}{Nome da Segunda Examinadora Sobrenome}{Ph.D.}
+  \examiner{Dr.}{Nome da Terceira Examinadora Sobrenome}{D.Sc.}
+  \examiner{Prof.}{Nome do Quarto Examinador Sobrenome}{Ph.D.}
+  \examiner{Prof.}{Nome do Quinto Examinador Sobrenome}{Ph.D.}
+  \department{COGE}
   \date{05}{2014}
 
   \keyword{Primeira palavra-chave}
