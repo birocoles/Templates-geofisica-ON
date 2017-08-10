@@ -52,7 +52,7 @@
 \def\fileversion{v2.2}
 \def\filedate{2011/02/08}
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{on}[\filedate\ \fileversion\ ON Dissertations and Thesis]
+\ProvidesClass{on}[\filedate\ \fileversion\ ON Dissertations and Theses]
 \LoadClass[12pt,a4paper,oneside]{book}
 \RequirePackage[sort&compress]{natbib}
 \RequirePackage{hyphenat}
@@ -84,7 +84,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 }
 
 \DeclareOption{report}{%
-  \newcommand{\@degree}{M.Sc. ou D.Sc.}
+  \newcommand{\@degree}{M.e ou Dr.}
   \newcommand{\@degreename}{Mestrado ou Doutorado}
   \newcommand{\local@degname}{Mestre ou Doutor}
   \newcommand{\foreign@degname}{Master or Doctor}
@@ -94,7 +94,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 }
 
 \DeclareOption{dscexam}{%
-  \newcommand{\@degree}{D.Sc.}
+  \newcommand{\@degree}{Dr.}
   \newcommand{\@degreename}{Doutorado}
   \newcommand{\local@degname}{Doutor}
   \newcommand{\foreign@degname}{Doctor}
@@ -118,13 +118,13 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \doublespacing
 }
 \ProcessOptions\relax
-\newcommand\department[1]{%
-  \ifthenelse{\equal{#1}{COAA}}
-    {\global\def\local@deptname{Astronomia}
-     \global\def\foreign@deptname{Astronomy}}{}
-  \ifthenelse{\equal{#1}{COGE}}
-    {\global\def\local@deptname{Geof{\' i}sica}
-     \global\def\foreign@deptname{Geophysics}}{}
+\newcommand\program[1]{%
+  \ifthenelse{\equal{#1}{ASTRO}}
+    {\global\def\local@progname{Astronomia}
+     \global\def\foreign@progname{Astronomy}}{}
+  \ifthenelse{\equal{#1}{GEO}}
+    {\global\def\local@progname{Geof{\' i}sica}
+     \global\def\foreign@progname{Geophysics}}{}
 }
 \renewcommand\title[1]{%
   \global\def\local@title{#1}%
@@ -132,18 +132,16 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \newcommand\foreigntitle[1]{%
   \global\def\foreign@title{#1}%
 }
-\newcommand\advisor[4]{%
+\newcommand\advisor[3]{%
   \global\def\@advtitle{#1}
   \global\def\@advname{#2}
   \global\def\@advsurn{#3}
-  \global\def\@advdegree{#4}
 }
 \newcount\@coadvisor\@coadvisor0
-\newcommand\coadvisor[4]{%
+\newcommand\coadvisor[3]{%
   \global\@namedef{ONcoAdvisorTitle:\expandafter\the\@coadvisor}{#1}
   \global\@namedef{ONcoAdvisorName:\expandafter\the\@coadvisor}{#2}
   \global\@namedef{ONcoAdvisorSurname:\expandafter\the\@coadvisor}{#3}
-  \global\@namedef{ONcoAdvisorDegree:\expandafter\the\@coadvisor}{#4}
   \global\advance\@coadvisor by 1
   \ifnum\@coadvisor>1
     \renewcommand\local@coadvisorstring{Co-orientadores}
@@ -152,8 +150,14 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 }
 \newcount\@examiner\@examiner0
 \newcommand\examiner[3]{%
-  \global\@namedef{ONExaminer:\expandafter\the\@examiner}{#1\ #2, #3}
+  \global\@namedef{ONExaminerTitle:\expandafter\the\@examiner}{#1}
+  \global\@namedef{ONExaminerName:\expandafter\the\@examiner}{#2}
+  \global\@namedef{ONExaminerSurname:\expandafter\the\@examiner}{#3}
   \global\advance\@examiner by 1
+  \ifnum\@examiner>1
+    \renewcommand\local@examinerstring{Examinadores}
+    \renewcommand\foreign@examinerstring{Examiners}
+  \fi
 }
 \renewcommand\author[2]{%
   \global\def\@authname{#1}
@@ -206,7 +210,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \setlength\baselineskip{0pt}
   \setlength\parskip{1mm}
   \makebox[20mm][c]{\hspace{12.9cm}\includegraphics[width=5.0cm]{ON-logo}
-  \hspace{6.0cm}\includegraphics[width=4.0cm]{MCTI-logo}}
+  \hspace{6.0cm}\includegraphics[width=4.0cm]{DIPPG-logo}}
   \end{flushleft}
   \vspace{1.05cm}
   \begin{center}
@@ -312,7 +316,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \hypersetup{%
   pdfauthor={\@authname\ \@authsurn},
   pdftitle={\local@title},
-  pdfsubject={\local@doctype\ de \@degreename\ em \local@deptname\ da ON/MCTI},
+  pdfsubject={\local@doctype\ de \@degreename\ em \local@progname\ da ON},
   pdfcreator={LaTeX with ONTeX toolkit},
   breaklinks={true},
   raiselinks={true},
@@ -328,7 +332,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
       \noindent\sloppy\nohyphens\@authsurn,
       \nohyphens\@authname\par
       \nohyphens{\local@title/\@authname\ \@authsurn. -- \local@cityname:
-      ON/MCTI, \number\year.}\par
+      ON, \number\year.}\par
       \pageref{front:pageno},
       \pageref{LastPage}
       p.\@ifundefined{r@cat:lofflag}{}{\pageref{cat:lofflag}} $29,7$cm.\par
@@ -362,7 +366,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
         \the\toks@
       \end{tabularx}}\par
       \nohyphens{\local@doctype\ ({\MakeLowercase\@degreename}) --
-      ON/MCTI/Programa de P{\' o}s-gradua{\c c}{\~ a}o em \local@deptname,
+      ON/Programa de P{\' o}s-gradua{\c c}{\~ a}o em \local@progname,
       \number\year.}\par
       \bibname: p. \pageref{bib:begin} -- \pageref{bib:end}.\par
       \count1=0
@@ -375,7 +379,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
       \ \csname ONcoAdvisorName:0\endcsname%
       \ifthenelse{\@coadvisor>1}{\ \emph{et~al.}{}}.
       II. \local@universityname, Programa de P{\' o}s-gradua{\c c}{\~ a}o
-      em \local@deptname.
+      em \local@progname.
       III. T{\' i}tulo.}
     \end{minipage}}
   \end{center}
@@ -430,7 +434,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \the\toks@
   \end{tabularx}\par
   \vspace*{2mm}
-  \noindent\local@deptstring: \local@deptname\par
+%  \noindent\local@progstring: \local@progname\par
   \vspace*{7mm}}{\vspace*{\fill}}
 \newenvironment{foreignabstract}{%
   \clearpage
@@ -473,7 +477,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \the\toks@
   \end{tabularx}\par
   \vspace*{2mm}
-  \noindent\foreign@deptstring: \foreign@deptname\par
+%  \noindent\foreign@progstring: \foreign@progname\par
   \vspace*{7mm}}{%
   \end{otherlanguage}
   \vspace*{\fill}
@@ -660,35 +664,37 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \newcommand\foreign@advisorstring{Advisor}
 \newcommand\local@coadvisorstring{Co-orientador}
 \newcommand\foreign@coadvisorstring{Co-advisor}
+\newcommand\local@examinerstring{Examinador}
+\newcommand\foreign@examinerstring{Examiner}
 \ifthenelse{\boolean{maledoc}}{%
   \newcommand\local@approvedname{Examinado por}%
 }{%
   \newcommand\local@approvedname{Examinada por}%
 }
-\newcommand\local@universityname{Observat{\' o}rio Nacional/MCTI}
-\newcommand\local@deptstring{Programa}
-\newcommand\foreign@deptstring{Department}
+\newcommand\local@universityname{Observat{\' o}rio Nacional}
+\newcommand\local@progstring{Programa}
+\newcommand\foreign@progstring{Program}
 \newcommand\local@cityname{Rio de Janeiro}
 \newcommand\local@statename{RJ}
 \newcommand\local@countryname{Brasil}
 \newcommand\frontcover@maintext{
   \sloppy\nohyphens{\local@doctype\ de \@degreename\
   \ifthenelse{\boolean{maledoc}}{apresentado}{apresentada}
-  ao Programa de P{\' o}s-gradua{\c c}{\~ a}o em \local@deptname\ do
+  ao Programa de P{\' o}s-gradua{\c c}{\~ a}o em \local@progname\ do
   \local@universityname, como parte dos requisitos
   necess{\' a}rios {\` a} obten{\c c}{\~ a}o do \ifthenelse{\boolean{doutboolean}}{Grau}{T{\' i}tulo}
-  de \local@degname\ em Ci\^ encias.}
+  de \local@degname\ em \local@progname.}
 }
 \newcommand\frontpage@maintext{
   \noindent {\MakeUppercase\local@doctype}
   \ifthenelse{\boolean{maledoc}}{SUBMETIDO}{SUBMETIDA}
   \sloppy\nohyphens{AO PROGRAMA DE P{\' O}S-GRADUA{\c C}{\~ A}O EM
-  {\MakeUppercase\local@deptname} DO OBSERVAT{\' O}RIO
-  NACIONAL/MCTI COMO PARTE DOS REQUISITOS
+  {\MakeUppercase\local@progname} DO OBSERVAT{\' O}RIO
+  NACIONAL COMO PARTE DOS REQUISITOS
   NECESS{\' A}RIOS PARA A OBTEN{\c C}{\~ A}O DO
   \ifthenelse{\boolean{doutboolean}}{GRAU}{T{\' I}TULO} DE
-  {\MakeUppercase\local@degname} EM CI{\^E}NCIAS EM
-  {\MakeUppercase\local@deptname.\par}}%
+  {\MakeUppercase\local@degname} EM 
+  {\MakeUppercase\local@progname.\par}}%
 }
 \newcommand\frontpage@bottomtext{%
   \begin{center}
@@ -699,15 +705,15 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \newcommand\abstract@toptext{%
   \noindent Resumo \ifthenelse{\boolean{maledoc}}{do}{da}
   \local@doctype\ \ifthenelse{\boolean{maledoc}}{apresentado}{apresentada}
-  \sloppy\nohyphens{ao Programa de P{\' o}s-gradua{\c c}{\~ a}o em Geof{\'i}sica do Observat{\' o}rio Nacional/MCTI como parte dos requisitos
+  \sloppy\nohyphens{ao Programa de P{\' o}s-gradua{\c c}{\~ a}o em Geof{\'i}sica do Observat{\' o}rio Nacional como parte dos requisitos
   necess{\' a}rios para a obten{\c c}{\~ a}o do
   \ifthenelse{\boolean{doutboolean}}{grau}{t{\' i}tulo} de
-  \local@degname\ em Ci{\^ e}ncias (\@degree)}
+  \local@degname\ em {\local@progname.\par}}
 }
 \newcommand\foreignabstract@toptext{%
   \noindent \sloppy\nohyphens{Abstract of \foreign@doctype\ presented to
-  Observat{\' o}rio Nacional/MCTI as a partial fulfillment of the requirements for the
-  degree of \foreign@degname\ of Science (\@degree)}
+  Observat{\' o}rio Nacional as a partial fulfillment of the requirements for the
+  degree of \foreign@degname\ in {\foreign@progname}.}
 }
 %%
 %%
