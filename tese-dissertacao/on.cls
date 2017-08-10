@@ -78,16 +78,25 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \newcommand{\@degreename}{Mestrado}
   \newcommand{\local@degname}{Mestre}
   \newcommand{\foreign@degname}{Master}
-  \setboolean{doutboolean}{true}
   \newcommand\local@doctype{Disserta{\c c}{\~ a}o}
   \newcommand\foreign@doctype{Dissertation}
 }
 
-\DeclareOption{report}{%
-  \newcommand{\@degree}{M.e ou Dr.}
-  \newcommand{\@degreename}{Mestrado ou Doutorado}
-  \newcommand{\local@degname}{Mestre ou Doutor}
-  \newcommand{\foreign@degname}{Master or Doctor}
+\DeclareOption{reportm}{%
+  \newcommand{\@degree}{Me.}
+  \newcommand{\@degreename}{Mestrado}
+  \newcommand{\local@degname}{Mestre}
+  \newcommand{\foreign@degname}{Master}
+  \setboolean{maledoc}{true}
+  \newcommand\local@doctype{Relat\' orio}
+  \newcommand\foreign@doctype{Report}
+}
+
+\DeclareOption{reportd}{%
+  \newcommand{\@degree}{Dr.}
+  \newcommand{\@degreename}{Doutorado}
+  \newcommand{\local@degname}{Doutor}
+  \newcommand{\foreign@degname}{Doctor}
   \setboolean{maledoc}{true}
   \newcommand\local@doctype{Relat\' orio}
   \newcommand\foreign@doctype{Report}
@@ -227,7 +236,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 
   \nohyphens{%
   \begin{tabularx}{8.45cm}[b]{@{}l@{ }>{\raggedright\arraybackslash}X@{}}
-    \local@advisorstring: & \@advname\ \@advsurn
+    \local@advisorstring: & \@advtitle\ \@advname\ \@advsurn
         \vspace*{5.0mm} \\
     \ifnum\@coadvisor=0
     \else
@@ -237,14 +246,17 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \toks@={}
     \@whilenum \count1<\@coadvisor \do{%
     \ifcase\count1 % same as \ifnum0=\count1
-      \toks@=\expandafter{\csname ONcoAdvisorName:\the\count1%
-        \expandafter\endcsname\expandafter\space%
+      \toks@=\expandafter{\csname ONcoAdvisorTitle:\the\count1%
+            \expandafter\endcsname\expandafter\space%
+        \csname ONcoAdvisorName:\the\count1%
+        	\expandafter\endcsname\expandafter\space%
         \csname ONcoAdvisorSurname:\the\count1\endcsname\\}
     \else
       \toks@=\expandafter\expandafter\expandafter{%
         \expandafter\the\expandafter\toks@%
         \expandafter&\expandafter\space%
-        \csname ONcoAdvisorName:\the\count1\expandafter\endcsname%
+        \csname ONcoAdvisorTitle:\the\count1\expandafter\endcsname%
+        \expandafter\space\csname ONcoAdvisorName:\the\count1\expandafter\endcsname%
         \expandafter\space\csname ONcoAdvisorSurname:\the\count1\endcsname\\
       }%
     \fi
@@ -277,7 +289,9 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
             \vskip26\p@ \baselineskip12pt
         \eqmakebox[signture@list]{\hrulefill}\\
         \eqmakebox[signture@list]{%
-            \ \ \ \csname ONExaminer:\the\count1 \endcsname\ \ \ }\\
+			 \ \ \ \csname ONExaminerTitle:\the\count1\expandafter\endcsname%
+        		   \expandafter\space\csname ONExaminerName:\the\count1\endcsname%
+        		   \expandafter\space\csname ONExaminerSurname:\the\count1\endcsname\ \ \ }\\
             \advance\count1 by 1}
   \end{flushright}
      \end{center}
@@ -406,35 +420,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \vspace*{7mm}
     \local@monthname/\number\year
   \end{center}\par
-  \vspace*{\fill}
-  \noindent%
-  \begin{tabularx}{\textwidth}[b]{@{}l@{ }>{\raggedright\arraybackslash}X@{}}
-      \local@advisorstring: & \@advname\ \@advsurn
-        \vspace*{5.0mm} \\
-    \ifnum\@coadvisor=0
-    \else
-    \local@coadvisorstring: &
-    \fi
-    \count1=0
-    \toks@={}
-    \@whilenum \count1<\@coadvisor \do{%
-    \ifcase\count1 % same as \ifnum0=\count1
-      \toks@=\expandafter{\csname ONcoAdvisorName:\the\count1%
-      \expandafter\endcsname\expandafter\space%
-      \csname ONcoAdvisorSurname:\the\count1\endcsname\\}
-    \else
-      \toks@=\expandafter\expandafter\expandafter{%
-        \expandafter\the\expandafter\toks@
-        \expandafter&\expandafter\space
-        \csname ONcoAdvisorName:\the\count1\expandafter\endcsname%
-        \expandafter\space\csname ONcoAdvisorSurname:\the\count1\endcsname\\
-      }%
-    \fi
-    \advance\count1 by 1}
-    \the\toks@
-  \end{tabularx}\par
-  \vspace*{2mm}
-%  \noindent\local@progstring: \local@progname\par
+
   \vspace*{7mm}}{\vspace*{\fill}}
 \newenvironment{foreignabstract}{%
   \clearpage
@@ -449,35 +435,6 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \vspace*{7mm}
     \foreign@monthname/\number\year
   \end{center}\par
-  \vspace*{\fill}
-  \noindent%
-  \begin{tabularx}{\textwidth}[b]{@{}l@{ }>{\raggedright\arraybackslash}X@{}}
-    \foreign@advisorstring: & \@advname\ \@advsurn
-        \vspace*{5.0mm} \\
-    \ifnum\@coadvisor=0
-    \else
-    \foreign@coadvisorstring: &
-    \fi
-    \count1=0
-    \toks@={}
-    \@whilenum \count1<\@coadvisor \do{%
-    \ifcase\count1 % same as \ifnum0=\count1
-      \toks@=\expandafter{\csname ONcoAdvisorName:\the\count1%
-      \expandafter\endcsname\expandafter\space%
-      \csname ONcoAdvisorSurname:\the\count1\endcsname\\}
-    \else
-      \toks@=\expandafter\expandafter\expandafter{%
-        \expandafter\the\expandafter\toks@
-        \expandafter&\expandafter\space
-        \csname ONcoAdvisorName:\the\count1\expandafter\endcsname%
-        \expandafter\space\csname ONcoAdvisorSurname:\the\count1\endcsname\\
-      }%
-    \fi
-    \advance\count1 by 1}
-    \the\toks@
-  \end{tabularx}\par
-  \vspace*{2mm}
-%  \noindent\foreign@progstring: \foreign@progname\par
   \vspace*{7mm}}{%
   \end{otherlanguage}
   \vspace*{\fill}
@@ -660,11 +617,11 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \newcommand\glossaryname{Glossary}
 \newcommand\listabbreviationname{Lista de Abreviaturas}
 \newcommand\listsymbolname{Lista de S{\' i}mbolos}
-\newcommand\local@advisorstring{Orientador}
+\newcommand\local@advisorstring{Orientador(a)}
 \newcommand\foreign@advisorstring{Advisor}
-\newcommand\local@coadvisorstring{Co-orientador}
+\newcommand\local@coadvisorstring{Co-orientador(a)}
 \newcommand\foreign@coadvisorstring{Co-advisor}
-\newcommand\local@examinerstring{Examinador}
+\newcommand\local@examinerstring{Examinador(a)}
 \newcommand\foreign@examinerstring{Examiner}
 \ifthenelse{\boolean{maledoc}}{%
   \newcommand\local@approvedname{Examinado por}%
@@ -678,11 +635,11 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \newcommand\local@statename{RJ}
 \newcommand\local@countryname{Brasil}
 \newcommand\frontcover@maintext{
-  \sloppy\nohyphens{\local@doctype\ de \@degreename\
+  \sloppy\nohyphens{\local@doctype\
   \ifthenelse{\boolean{maledoc}}{apresentado}{apresentada}
   ao Programa de P{\' o}s-gradua{\c c}{\~ a}o em \local@progname\ do
   \local@universityname, como parte dos requisitos
-  necess{\' a}rios {\` a} obten{\c c}{\~ a}o do \ifthenelse{\boolean{doutboolean}}{Grau}{T{\' i}tulo}
+  necess{\' a}rios {\` a} obten{\c c}{\~ a}o do \ifthenelse{\boolean{doutboolean}}{grau}{t{\' i}tulo}
   de \local@degname\ em \local@progname.}
 }
 \newcommand\frontpage@maintext{
@@ -705,15 +662,16 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \newcommand\abstract@toptext{%
   \noindent Resumo \ifthenelse{\boolean{maledoc}}{do}{da}
   \local@doctype\ \ifthenelse{\boolean{maledoc}}{apresentado}{apresentada}
-  \sloppy\nohyphens{ao Programa de P{\' o}s-gradua{\c c}{\~ a}o em Geof{\'i}sica do Observat{\' o}rio Nacional como parte dos requisitos
+  \sloppy\nohyphens{ao Programa de P{\' o}s-gradua{\c c}{\~ a}o em \local@progname\ do Observat{\' o}rio Nacional como parte dos requisitos
   necess{\' a}rios para a obten{\c c}{\~ a}o do
   \ifthenelse{\boolean{doutboolean}}{grau}{t{\' i}tulo} de
   \local@degname\ em {\local@progname.\par}}
 }
 \newcommand\foreignabstract@toptext{%
-  \noindent \sloppy\nohyphens{Abstract of \foreign@doctype\ presented to
-  Observat{\' o}rio Nacional as a partial fulfillment of the requirements for the
-  degree of \foreign@degname\ in {\foreign@progname}.}
+  \noindent Abstract of the
+  \foreign@doctype\ presented
+  \sloppy\nohyphens{to the National Observatory's Graduate Program in \foreign@progname\ as a partial fulfillment
+  of the requirements for the degree of \foreign@degname\ in {\foreign@progname.\par}}
 }
 %%
 %%

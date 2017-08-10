@@ -1,15 +1,16 @@
-%
+% Para definir o tipo de documento, descomente apenas
+% uma das linhas "\documentclass" abaixo
 
-%\documentclass[msc]{on} %usar esta para dissertação de mestrado (e comentar as demais linhas com '\documentclass')
-%\documentclass[msc, numbers]{on} %a opção numbers da classe é usada para citação por lista numérica em ordem de ocorrência
-%\documentclass[dsc]{on}
-%\documentclass[dscexam]{on} %para exame de qualificação
-\documentclass[report]{on} %para relatórios
+\documentclass[msc]{on}     % dissertação de mestrado
+%\documentclass[dsc]{on}     % tese de doutorado
+%\documentclass[dscexam]{on} % exame de qualificação
+%\documentclass[reportd]{on} % relatório feito durante o doutorado
+%\documentclass[reportm]{on} % relatório feito durante o mestrado
+
+% pacotes utilizados
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb}
 \usepackage{hyperref}
-
-%pacotes utilizados
 \usepackage{enumerate} %para gerar listas numeradas
 \usepackage{graphicx}  %para figuras eps
 \usepackage{subfigure} %para figuras múltimas, com (a), (b), (c), etc.
@@ -18,22 +19,33 @@
 \makeloabbreviations
 
 \begin{document}
-  \title{Título da Tese ou Dissertação}
-  \foreigntitle{Thesis Title}
+
+  % Título em português
+  \title{Título}
+  
+  % Título em inglês
+  \foreigntitle{Title}
+  
+  % Autor
   \author{Nome do(a) Autor(a)}{Sobrenome}
-  \advisor{Dr. ou Dra.}{Nome do(a) orientador(a)}{Sobrenome}
-  \coadvisor{Dr. ou Dra.}{Nome do(a) Co-orientador(a)}{Sobrenome}
-  \coadvisor{Dr. ou Dra.}{Nome do(a) Co-orientador(a)}{Sobrenome}
 
+  % Orientador(a)
+  \advisor{Dra.}{Nome da orientadora}{Sobrenome}
+  %\advisor{Dr.}{Nome do orientador}{Sobrenome}
 
-  \examiner{Dr. ou Dra.}{Nome do(a) Examinador(a)}{Sobrenome}
-  \examiner{Dr. ou Dra.}{Nome do(a) Examinador(a)}{Sobrenome}
-  \examiner{Dr. ou Dra.}{Nome do(a) Examinador(a)}{Sobrenome}
-  \examiner{Dr. ou Dra.}{Nome do(a) Examinador(a)}{Sobrenome}
-  \examiner{Dr. ou Dra.}{Nome do(a) Examinador(a)}{Sobrenome}
+  % Co-orientadores (pode ser mais de um)
+  \coadvisor{Dra.}{Nome da Co-orientadora}{Sobrenome}
+  \coadvisor{Dr.}{Nome do Co-orientador}{Sobrenome}
+
+  % Examinadores (caso seja um relatório, não modifique as linhas "\examiner")
+  \examiner{Dra.}{Nome da Examinadora}{Sobrenome}
+  \examiner{Dr.}{Nome do Examinador}{Sobrenome}
+  \examiner{Dra.}{Nome da Examinadora}{Sobrenome}
+  \examiner{Dr.}{Nome do Examinador}{Sobrenome}
+  \examiner{Dra.}{Nome da Examinadora}{Sobrenome}
 
   \program{GEO}
-  \date{05}{2014}
+  \date{03}{2017}
 
   \keyword{Primeira palavra-chave}
   \keyword{Segunda palavra-chave}
@@ -41,9 +53,11 @@
 
   \maketitle
 
+  % caso seja um relatório, comente as três próximas linhas
   \frontmatter
   \include{dedic}
   \include{thanks}
+
   \include{resumo}
   \include{abstract}
   \tableofcontents
@@ -61,9 +75,9 @@
   \include{chap06}
 
   \backmatter
-  \bibliographystyle{on-plain} %usar em conjnunto com o estilo de citações por ordem alfabética (defaut da classe ONTeX)
-%  \bibliographystyle{on-unsrt} %usar em conjnunto com o estilo de citações por lista em ordem de ocorrência no texto (utilizar a opção "numbers" na classe ONTeX)
-  \bibliography{thesis}
+
+  \bibliographystyle{on-plain} % estilo de citações por ordem alfabética (defaut da classe ONTeX)
+  \bibliography{references}
 
   \appendix
   \include{appenA}
