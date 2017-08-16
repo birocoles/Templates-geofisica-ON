@@ -44,9 +44,14 @@
   \examiner{Dr.}{Nome do Examinador}{Sobrenome}
   \examiner{Dra.}{Nome da Examinadora}{Sobrenome}
 
+  % Programa de Pós-Graduação 
   \program{GEO}
+  %\program{ASTRO}
+  
+  % Data (mês e ano)
   \date{03}{2017}
 
+  % Palavras-chave
   \keyword{Primeira palavra-chave}
   \keyword{Segunda palavra-chave}
   \keyword{Terceira palavra-chave}
@@ -54,10 +59,11 @@
   \maketitle
 
   % caso seja um relatório, comente as três próximas linhas
-  \frontmatter
-  \include{dedic}
-  \include{thanks}
-
+  \frontmatter     % folha de rosto
+  \makecatalog     % ficha catalogŕafica
+  \include{dedic}  % dedicatória
+  \include{thanks} % agradecimentos
+  
   \include{resumo}
   \include{abstract}
   \tableofcontents
@@ -76,9 +82,11 @@
 
   \backmatter
 
-  \bibliographystyle{on-plain} % estilo de citações por ordem alfabética (defaut da classe ONTeX)
+  % estilo de citações por ordem alfabética (defaut da classe ONTeX)
+  \bibliographystyle{on-plain}
   \bibliography{references}
 
   \appendix
   \include{appenA}
+
 \end{document} 

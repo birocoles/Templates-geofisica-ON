@@ -187,31 +187,22 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \global\@namedef{ONKeyword:\expandafter\the\c@keywords}{#1}
   \global\addtocounter{keywords}{1}
 }
+
+% begin frontmatter
+
 \renewcommand\frontmatter{%
   \cleardoublepage
-  \@mainmatterfalse
   \pagenumbering{roman}
   \thispagestyle{empty}
   \setcounter{page}{2}
   \makefrontpage
   \clearpage
   \pagestyle{plain}
-  \ifthenelse{\boolean{maledoc}}{}{\makecatalog}%
 }
-\renewcommand\mainmatter{%
-  \on@mainBegin
-  \cleardoublepage
-  \@mainmattertrue
-  \pagestyle{plain}
-  \pagenumbering{arabic}}
-\renewcommand\backmatter{%
-  \if@openright
-    \cleardoublepage
-  \else
-    \clearpage
-  \fi}
+
+% begin folha de rosto
+
 \renewcommand\maketitle{%
-  \pagenumbering{alph}
   \ltx@ifpackageloaded{hyperref}{\on@hypersetup}{}%
   \begin{titlepage}
   \begin{flushleft}
@@ -336,6 +327,11 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   raiselinks={true},
   pageanchor={true},
 }}
+
+% end folha de rosto
+
+% begin ficha catalográfica
+
 \newcommand\makecatalog{%
   \vspace*{\fill}
   \begin{center}
@@ -398,6 +394,9 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \end{minipage}}
   \end{center}
   \vspace*{\fill}}
+
+% end ficha catalográfica
+
 \newcommand\dedication[1]{
   \gdef\@dedic{#1}
     \cleardoublepage
@@ -447,6 +446,8 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \global\let\author\relax
   \global\let\author\relax
   \global\let\date\relax}
+  
+
 \renewcommand\listoffigures{%
     \on@hasLof
     \if@twocolumn
@@ -461,6 +462,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \@starttoc{lof}%
     \if@restonecol\twocolumn\fi
     }
+
 \renewcommand\listoftables{%
     \if@twocolumn
       \@restonecoltrue\onecolumn
@@ -475,6 +477,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \@starttoc{lot}%
     \if@restonecol\twocolumn\fi
     }
+
 \newcommand\printlosymbols{%
 \renewcommand\glossaryname{\listsymbolname}%
 \@input@{\jobname.los}}
@@ -487,6 +490,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   {Writing index of symbols file \jobname.syx}%
   \let\makelosymbols\@empty
 }
+
 \@onlypreamble\makelosymbols
 \AtBeginDocument{%
 \@ifpackageloaded{hyperref}{%
@@ -512,6 +516,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   {Writing index of abbreviations file \jobname.abx}%
   \let\makeloabbreviations\@empty
 }
+
 \@onlypreamble\makeloabbreviations
 \AtBeginDocument{%
 \@ifpackageloaded{hyperref}{%
@@ -554,6 +559,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
         \string\newlabel{cat:lofflag}{{}{:~il.;}{}}}}%
   }%
 }
+
 \newdimen\bibindent%
 \setlength\bibindent{1.5em}%
 \renewenvironment{thebibliography}[1]%
@@ -598,6 +604,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
    \sloppy}%
   {\if@restonecol\twocolumn\fi%
 \endlist}
+
 \renewenvironment{theindex}{%
   \if@twocolumn
     \@restonecolfalse
