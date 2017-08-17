@@ -73,15 +73,8 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \setboolean{maledoc}{false}
 \newboolean{doutboolean}
 \setboolean{doutboolean}{false}
-\DeclareOption{msc}{%
-  \newcommand{\@degree}{M.Sc.}
-  \newcommand{\@degreename}{Mestrado}
-  \newcommand{\local@degname}{Mestre}
-  \newcommand{\foreign@degname}{Master}
-  \newcommand\local@doctype{Disserta{\c c}{\~ a}o}
-  \newcommand\foreign@doctype{Dissertation}
-}
 
+% relatório feito durante o mestrado
 \DeclareOption{reportm}{%
   \newcommand{\@degree}{Me.}
   \newcommand{\@degreename}{Mestrado}
@@ -92,6 +85,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \newcommand\foreign@doctype{Report}
 }
 
+% relatório feito durante o doutorado
 \DeclareOption{reportd}{%
   \newcommand{\@degree}{Dr.}
   \newcommand{\@degreename}{Doutorado}
@@ -102,6 +96,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \newcommand\foreign@doctype{Report}
 }
 
+% exame de qualificação
 \DeclareOption{dscexam}{%
   \newcommand{\@degree}{Dr.}
   \newcommand{\@degreename}{Doutorado}
@@ -111,6 +106,18 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \newcommand\local@doctype{Exame de Qualifica{\c c}{\~ a}o}
   \newcommand\foreign@doctype{Qualifying Exam}
 }
+
+% dissertação de mestrado
+\DeclareOption{msc}{%
+  \newcommand{\@degree}{M.Sc.}
+  \newcommand{\@degreename}{Mestrado}
+  \newcommand{\local@degname}{Mestre}
+  \newcommand{\foreign@degname}{Master}
+  \newcommand\local@doctype{Disserta{\c c}{\~ a}o}
+  \newcommand\foreign@doctype{Dissertation}
+}
+
+% tese de doutorado
 \DeclareOption{dsc}{%
   \newcommand{\@degree}{D.Sc.}
   \newcommand{\@degreename}{Doutorado}
@@ -119,13 +126,18 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \newcommand\local@doctype{Tese}
   \newcommand\foreign@doctype{Thesis}
 }
+
 \DeclareOption{numbers}{%
   \PassOptionsToPackage{numbers}{natbib}
 }
+
+
 \onehalfspacing
 \DeclareOption{doublespacing}{%
   \doublespacing
 }
+
+
 \ProcessOptions\relax
 \newcommand\program[1]{%
   \ifthenelse{\equal{#1}{ASTRO}}
@@ -135,17 +147,24 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     {\global\def\local@progname{Geof{\' i}sica}
      \global\def\foreign@progname{Geophysics}}{}
 }
+
+
 \renewcommand\title[1]{%
   \global\def\local@title{#1}%
 }
+
+
 \newcommand\foreigntitle[1]{%
   \global\def\foreign@title{#1}%
 }
+
+
 \newcommand\advisor[3]{%
   \global\def\@advtitle{#1}
   \global\def\@advname{#2}
   \global\def\@advsurn{#3}
 }
+
 \newcount\@coadvisor\@coadvisor0
 \newcommand\coadvisor[3]{%
   \global\@namedef{ONcoAdvisorTitle:\expandafter\the\@coadvisor}{#1}
@@ -157,6 +176,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \renewcommand\foreign@coadvisorstring{Co-advisors}
   \fi
 }
+
 \newcount\@examiner\@examiner0
 \newcommand\examiner[3]{%
   \global\@namedef{ONExaminerTitle:\expandafter\the\@examiner}{#1}
@@ -168,27 +188,33 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \renewcommand\foreign@examinerstring{Examiners}
   \fi
 }
+
 \renewcommand\author[2]{%
   \global\def\@authname{#1}
   \global\def\@authsurn{#2}
 }
+
 \renewcommand\date[2]{%
   \month=#1
   \year=#2
 }
+
 \newcommand\local@monthname{\ifcase\month\or
   Janeiro\or Fevereiro\or Mar{\c c}o\or Abril\or Maio\or Junho\or
   Julho\or Agosto\or Setembro\or Outubro\or Novembro\or Dezembro\fi}
+  
 \newcommand\foreign@monthname{\ifcase\month\or
   January\or February\or March\or April\or May\or June\or
   July\or August\or September\or October\or November\or December\fi}
+
 \newcounter{keywords}
+
 \newcommand\keyword[1]{%
   \global\@namedef{ONKeyword:\expandafter\the\c@keywords}{#1}
   \global\addtocounter{keywords}{1}
 }
 
-% begin frontmatter
+% begin folha de rosto
 
 \renewcommand\frontmatter{%
   \cleardoublepage
@@ -199,8 +225,6 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \clearpage
   \pagestyle{plain}
 }
-
-% begin folha de rosto
 
 \renewcommand\maketitle{%
   \ltx@ifpackageloaded{hyperref}{\on@hypersetup}{}%
@@ -477,6 +501,9 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \@starttoc{lot}%
     \if@restonecol\twocolumn\fi
     }
+    
+   
+% begin symbols e abbreviations
 
 \newcommand\printlosymbols{%
 \renewcommand\glossaryname{\listsymbolname}%
@@ -504,8 +531,9 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
       {\string\indexentry{[#1] #2}{\thepage}}%
     \endgroup
     \@esphack}}}
+
 \newcommand\printloabbreviations{%
-\renewcommand\glossaryname{\listabbreviationname}%
+\renewcommand\glossaryname{\listabbrevname}%
 \@input@{\jobname.lab}}
 \def\makeloabbreviations{%
   \newwrite\@labfile
@@ -560,6 +588,8 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   }%
 }
 
+% end symbols e abbreviations
+
 \newdimen\bibindent%
 \setlength\bibindent{1.5em}%
 \renewenvironment{thebibliography}[1]%
@@ -585,6 +615,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
        {\@latex@warning{Empty `thebibliography' environment}}%
        \on@bibEnd
       \endlist}
+
 \newenvironment{theglossary}{%
   \if@twocolumn%
     \@restonecoltrue\onecolumn%
@@ -622,8 +653,8 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \let\item\@idxitem}
   {\if@restonecol\onecolumn\else\clearpage\fi}
 \newcommand\glossaryname{Glossary}
-\newcommand\listabbreviationname{Lista de Abreviaturas}
-\newcommand\listsymbolname{Lista de S{\' i}mbolos}
+%\newcommand\listabbreviationname{Lista de Abreviaturas}
+%\newcommand\listsymbolname{Lista de S{\' i}mbolos}
 \newcommand\local@advisorstring{Orientador(a)}
 \newcommand\foreign@advisorstring{Advisor}
 \newcommand\local@coadvisorstring{Co-orientador(a)}

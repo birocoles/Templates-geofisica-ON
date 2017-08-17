@@ -15,8 +15,10 @@
 \usepackage{graphicx}  %para figuras eps
 \usepackage{subfigure} %para figuras múltimas, com (a), (b), (c), etc.
 
-\makelosymbols
-\makeloabbreviations
+% os dois comandos estão com problema e deverão ser
+% corrigidos futuramente
+%\makelosymbols
+%\makeloabbreviations
 
 \begin{document}
 
@@ -58,7 +60,7 @@
 
   \maketitle
 
-  % caso seja um relatório, comente as três próximas linhas
+  % caso seja um relatório, comente as quatro (4) próximas linhas
   \frontmatter     % folha de rosto
   \makecatalog     % ficha catalogŕafica
   \include{dedic}  % dedicatória
@@ -66,13 +68,21 @@
   
   \include{resumo}
   \include{abstract}
-  \tableofcontents
-  \listoffigures
-  \listoftables
-  \printlosymbols
-  \printloabbreviations
+  \tableofcontents   % sumário
+  \listoffigures     % lista de figuras (opcional)
+  \listoftables      % lista de tabelas (opcional)
+
+  % os dois comandos estão com problema e deverão ser
+  % corrigidos futuramente
+  %\printlosymbols
+  %\printloabbreviations
 
   \mainmatter
+
+  % As linhas "\include" abaixo incluem os capítulos no documento.
+  % Edite os arquivos "chapxx.tex" de acordo com as suas necessidades.
+  % No presente documento, são incluídos seis capítulos, mas é possível
+  % utilizar quantos capítulos forem necessários.
   \include{chap01}
   \include{chap02}
   \include{chap03}
@@ -87,6 +97,11 @@
   \bibliography{references}
 
   \appendix
+  % A linha "\include" abaixo inclui um capítulo de apêndice.
+  % Edite o arquivo "appenA.tex" de acordo com as suas necessidades.
+  % É possível incluir outros capítulos de apêndice. Para tanto,
+  % crie outros arquivos "appenX.tex", de acordo com as suas necessidades,
+  % e inclua-os no documento utilizando "\include{appenX}".
   \include{appenA}
 
 \end{document} 
