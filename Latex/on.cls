@@ -52,7 +52,7 @@
 \def\fileversion{v2.2}
 \def\filedate{2011/02/08}
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{on}[\filedate\ \fileversion\ ON Dissertations and Thesis]
+\ProvidesClass{on}[\filedate\ \fileversion\ ON Dissertations and Theses]
 \LoadClass[12pt,a4paper,oneside]{book}
 \RequirePackage[sort&compress]{natbib}
 \RequirePackage{hyphenat}
@@ -73,6 +73,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \setboolean{maledoc}{false}
 \newboolean{doutboolean}
 \setboolean{doutboolean}{false}
+<<<<<<< HEAD:tese-dissertacao/on.cls
 \DeclareOption{report}{%
   \newcommand{\@degree}{M.Sc. ou D.Sc.}
   \newcommand{\@degreename}{Mestrado ou Doutorado}
@@ -85,16 +86,34 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \DeclareOption{msc}{%
   \newcommand{\foreign@degree}{M.Sc.}
   \newcommand{\local@degree}{Me.}
+=======
+
+% relatório feito durante o mestrado
+\DeclareOption{reportm}{%
+  \newcommand{\@degree}{Me.}
+>>>>>>> review2017:Latex/on.cls
   \newcommand{\@degreename}{Mestrado}
   \newcommand{\local@degname}{Mestre}
   \newcommand{\foreign@degname}{Master}
-  \setboolean{doutboolean}{true}
-  \newcommand\local@doctype{Disserta{\c c}{\~ a}o}
-  \newcommand\foreign@doctype{Dissertation}
+  \setboolean{maledoc}{true}
+  \newcommand\local@doctype{Relat\' orio}
+  \newcommand\foreign@doctype{Report}
 }
+
+% relatório feito durante o doutorado
+\DeclareOption{reportd}{%
+  \newcommand{\@degree}{Dr.}
+  \newcommand{\@degreename}{Doutorado}
+  \newcommand{\local@degname}{Doutor}
+  \newcommand{\foreign@degname}{Doctor}
+  \setboolean{maledoc}{true}
+  \newcommand\local@doctype{Relat\' orio}
+  \newcommand\foreign@doctype{Report}
+}
+
+% exame de qualificação
 \DeclareOption{dscexam}{%
-  \newcommand{\foreign@degree}{D.Sc.}
-  \newcommand{\local@degree}{Dr.}
+  \newcommand{\@degree}{Dr.}
   \newcommand{\@degreename}{Doutorado}
   \newcommand{\local@degname}{Doutor}
   \newcommand{\foreign@degname}{Doctor}
@@ -102,22 +121,38 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \newcommand\local@doctype{Exame de Qualifica{\c c}{\~ a}o}
   \newcommand\foreign@doctype{Qualifying Exam}
 }
+
+% dissertação de mestrado
+\DeclareOption{msc}{%
+  \newcommand{\@degree}{M.Sc.}
+  \newcommand{\@degreename}{Mestrado}
+  \newcommand{\local@degname}{Mestre}
+  \newcommand{\foreign@degname}{Master}
+  \newcommand\local@doctype{Disserta{\c c}{\~ a}o}
+  \newcommand\foreign@doctype{Dissertation}
+}
+
+% tese de doutorado
 \DeclareOption{dsc}{%
-  \newcommand{\foreign@degree}{D.Sc.}
-  \newcommand{\local@degree}{Dr.}
+  \newcommand{\@degree}{D.Sc.}
   \newcommand{\@degreename}{Doutorado}
   \newcommand{\local@degname}{Doutor}
   \newcommand{\foreign@degname}{Doctor}
   \newcommand\local@doctype{Tese}
   \newcommand\foreign@doctype{Thesis}
 }
+
 \DeclareOption{numbers}{%
   \PassOptionsToPackage{numbers}{natbib}
 }
+
+
 \onehalfspacing
 \DeclareOption{doublespacing}{%
   \doublespacing
 }
+
+
 \ProcessOptions\relax
 \newcommand\program[1]{%
   \ifthenelse{\equal{#1}{ASTRO}}
@@ -127,79 +162,86 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     {\global\def\local@progname{Geof{\' i}sica}
      \global\def\foreign@progname{Geophysics}}{}
 }
+
+
 \renewcommand\title[1]{%
   \global\def\local@title{#1}%
 }
+
+
 \newcommand\foreigntitle[1]{%
   \global\def\foreign@title{#1}%
 }
-\newcommand\advisor[4]{%
+
+
+\newcommand\advisor[3]{%
   \global\def\@advtitle{#1}
   \global\def\@advname{#2}
   \global\def\@advsurn{#3}
-  \global\def\@advdegree{#4}
 }
+
 \newcount\@coadvisor\@coadvisor0
-\newcommand\coadvisor[4]{%
+\newcommand\coadvisor[3]{%
   \global\@namedef{ONcoAdvisorTitle:\expandafter\the\@coadvisor}{#1}
   \global\@namedef{ONcoAdvisorName:\expandafter\the\@coadvisor}{#2}
   \global\@namedef{ONcoAdvisorSurname:\expandafter\the\@coadvisor}{#3}
-  \global\@namedef{ONcoAdvisorDegree:\expandafter\the\@coadvisor}{#4}
   \global\advance\@coadvisor by 1
   \ifnum\@coadvisor>1
     \renewcommand\local@coadvisorstring{Co-orientadores}
     \renewcommand\foreign@coadvisorstring{Co-advisors}
   \fi
 }
+
 \newcount\@examiner\@examiner0
 \newcommand\examiner[3]{%
-  \global\@namedef{ONExaminer:\expandafter\the\@examiner}{#1\ #2, #3}
+  \global\@namedef{ONExaminerTitle:\expandafter\the\@examiner}{#1}
+  \global\@namedef{ONExaminerName:\expandafter\the\@examiner}{#2}
+  \global\@namedef{ONExaminerSurname:\expandafter\the\@examiner}{#3}
   \global\advance\@examiner by 1
+  \ifnum\@examiner>1
+    \renewcommand\local@examinerstring{Examinadores}
+    \renewcommand\foreign@examinerstring{Examiners}
+  \fi
 }
+
 \renewcommand\author[2]{%
   \global\def\@authname{#1}
   \global\def\@authsurn{#2}
 }
+
 \renewcommand\date[2]{%
   \month=#1
   \year=#2
 }
+
 \newcommand\local@monthname{\ifcase\month\or
   Janeiro\or Fevereiro\or Mar{\c c}o\or Abril\or Maio\or Junho\or
   Julho\or Agosto\or Setembro\or Outubro\or Novembro\or Dezembro\fi}
+  
 \newcommand\foreign@monthname{\ifcase\month\or
   January\or February\or March\or April\or May\or June\or
   July\or August\or September\or October\or November\or December\fi}
+
 \newcounter{keywords}
+
 \newcommand\keyword[1]{%
   \global\@namedef{ONKeyword:\expandafter\the\c@keywords}{#1}
   \global\addtocounter{keywords}{1}
 }
+
+% begin folha de rosto
+
 \renewcommand\frontmatter{%
   \cleardoublepage
-  \@mainmatterfalse
   \pagenumbering{roman}
   \thispagestyle{empty}
   \setcounter{page}{2}
   \makefrontpage
   \clearpage
   \pagestyle{plain}
-  \ifthenelse{\boolean{maledoc}}{}{\makecatalog}%
 }
-\renewcommand\mainmatter{%
-  \on@mainBegin
-  \cleardoublepage
-  \@mainmattertrue
-  \pagestyle{plain}
-  \pagenumbering{arabic}}
-\renewcommand\backmatter{%
-  \if@openright
-    \cleardoublepage
-  \else
-    \clearpage
-  \fi}
+
 \renewcommand\maketitle{%
-  \pagenumbering{alph}
   \ltx@ifpackageloaded{hyperref}{\on@hypersetup}{}%
   \begin{titlepage}
   \begin{flushleft}
@@ -224,7 +266,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 
   \nohyphens{%
   \begin{tabularx}{8.45cm}[b]{@{}l@{ }>{\raggedright\arraybackslash}X@{}}
-    \local@advisorstring: & \@advname\ \@advsurn
+    \local@advisorstring: & \@advtitle\ \@advname\ \@advsurn
         \vspace*{5.0mm} \\
     \ifnum\@coadvisor=0
     \else
@@ -234,14 +276,17 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \toks@={}
     \@whilenum \count1<\@coadvisor \do{%
     \ifcase\count1 % same as \ifnum0=\count1
-      \toks@=\expandafter{\csname ONcoAdvisorName:\the\count1%
-        \expandafter\endcsname\expandafter\space%
+      \toks@=\expandafter{\csname ONcoAdvisorTitle:\the\count1%
+            \expandafter\endcsname\expandafter\space%
+        \csname ONcoAdvisorName:\the\count1%
+        	\expandafter\endcsname\expandafter\space%
         \csname ONcoAdvisorSurname:\the\count1\endcsname\\}
     \else
       \toks@=\expandafter\expandafter\expandafter{%
         \expandafter\the\expandafter\toks@%
         \expandafter&\expandafter\space%
-        \csname ONcoAdvisorName:\the\count1\expandafter\endcsname%
+        \csname ONcoAdvisorTitle:\the\count1\expandafter\endcsname%
+        \expandafter\space\csname ONcoAdvisorName:\the\count1\expandafter\endcsname%
         \expandafter\space\csname ONcoAdvisorSurname:\the\count1\endcsname\\
       }%
     \fi
@@ -274,7 +319,9 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
             \vskip26\p@ \baselineskip12pt
         \eqmakebox[signture@list]{\hrulefill}\\
         \eqmakebox[signture@list]{%
-            \ \ \ \csname ONExaminer:\the\count1 \endcsname\ \ \ }\\
+			 \ \ \ \csname ONExaminerTitle:\the\count1\expandafter\endcsname%
+        		   \expandafter\space\csname ONExaminerName:\the\count1\endcsname%
+        		   \expandafter\space\csname ONExaminerSurname:\the\count1\endcsname\ \ \ }\\
             \advance\count1 by 1}
   \end{flushright}
      \end{center}
@@ -319,6 +366,11 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   raiselinks={true},
   pageanchor={true},
 }}
+
+% end folha de rosto
+
+% begin ficha catalográfica
+
 \newcommand\makecatalog{%
   \vspace*{\fill}
   \begin{center}
@@ -381,6 +433,9 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \end{minipage}}
   \end{center}
   \vspace*{\fill}}
+
+% end ficha catalográfica
+
 \newcommand\dedication[1]{
   \gdef\@dedic{#1}
     \cleardoublepage
@@ -403,35 +458,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \vspace*{7mm}
     \local@monthname/\number\year
   \end{center}\par
-  \vspace*{\fill}
-  \noindent%
-  \begin{tabularx}{\textwidth}[b]{@{}l@{ }>{\raggedright\arraybackslash}X@{}}
-      \local@advisorstring: & \@advname\ \@advsurn
-        \vspace*{5.0mm} \\
-    \ifnum\@coadvisor=0
-    \else
-    \local@coadvisorstring: &
-    \fi
-    \count1=0
-    \toks@={}
-    \@whilenum \count1<\@coadvisor \do{%
-    \ifcase\count1 % same as \ifnum0=\count1
-      \toks@=\expandafter{\csname ONcoAdvisorName:\the\count1%
-      \expandafter\endcsname\expandafter\space%
-      \csname ONcoAdvisorSurname:\the\count1\endcsname\\}
-    \else
-      \toks@=\expandafter\expandafter\expandafter{%
-        \expandafter\the\expandafter\toks@
-        \expandafter&\expandafter\space
-        \csname ONcoAdvisorName:\the\count1\expandafter\endcsname%
-        \expandafter\space\csname ONcoAdvisorSurname:\the\count1\endcsname\\
-      }%
-    \fi
-    \advance\count1 by 1}
-    \the\toks@
-  \end{tabularx}\par
-  \vspace*{2mm}
-  \noindent\local@progstring: \local@progname\par
+
   \vspace*{7mm}}{\vspace*{\fill}}
 \newenvironment{foreignabstract}{%
   \clearpage
@@ -446,35 +473,6 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \vspace*{7mm}
     \foreign@monthname/\number\year
   \end{center}\par
-  \vspace*{\fill}
-  \noindent%
-  \begin{tabularx}{\textwidth}[b]{@{}l@{ }>{\raggedright\arraybackslash}X@{}}
-    \foreign@advisorstring: & \@advname\ \@advsurn
-        \vspace*{5.0mm} \\
-    \ifnum\@coadvisor=0
-    \else
-    \foreign@coadvisorstring: &
-    \fi
-    \count1=0
-    \toks@={}
-    \@whilenum \count1<\@coadvisor \do{%
-    \ifcase\count1 % same as \ifnum0=\count1
-      \toks@=\expandafter{\csname ONcoAdvisorName:\the\count1%
-      \expandafter\endcsname\expandafter\space%
-      \csname ONcoAdvisorSurname:\the\count1\endcsname\\}
-    \else
-      \toks@=\expandafter\expandafter\expandafter{%
-        \expandafter\the\expandafter\toks@
-        \expandafter&\expandafter\space
-        \csname ONcoAdvisorName:\the\count1\expandafter\endcsname%
-        \expandafter\space\csname ONcoAdvisorSurname:\the\count1\endcsname\\
-      }%
-    \fi
-    \advance\count1 by 1}
-    \the\toks@
-  \end{tabularx}\par
-  \vspace*{2mm}
-  \noindent\foreign@progstring: \foreign@progname\par
   \vspace*{7mm}}{%
   \end{otherlanguage}
   \vspace*{\fill}
@@ -487,6 +485,8 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \global\let\author\relax
   \global\let\author\relax
   \global\let\date\relax}
+  
+
 \renewcommand\listoffigures{%
     \on@hasLof
     \if@twocolumn
@@ -501,6 +501,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \@starttoc{lof}%
     \if@restonecol\twocolumn\fi
     }
+
 \renewcommand\listoftables{%
     \if@twocolumn
       \@restonecoltrue\onecolumn
@@ -515,6 +516,10 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \@starttoc{lot}%
     \if@restonecol\twocolumn\fi
     }
+    
+   
+% begin symbols e abbreviations
+
 \newcommand\printlosymbols{%
 \renewcommand\glossaryname{\listsymbolname}%
 \@input@{\jobname.los}}
@@ -527,6 +532,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   {Writing index of symbols file \jobname.syx}%
   \let\makelosymbols\@empty
 }
+
 \@onlypreamble\makelosymbols
 \AtBeginDocument{%
 \@ifpackageloaded{hyperref}{%
@@ -540,8 +546,9 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
       {\string\indexentry{[#1] #2}{\thepage}}%
     \endgroup
     \@esphack}}}
+
 \newcommand\printloabbreviations{%
-\renewcommand\glossaryname{\listabbreviationname}%
+\renewcommand\glossaryname{\listabbrevname}%
 \@input@{\jobname.lab}}
 \def\makeloabbreviations{%
   \newwrite\@labfile
@@ -552,6 +559,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   {Writing index of abbreviations file \jobname.abx}%
   \let\makeloabbreviations\@empty
 }
+
 \@onlypreamble\makeloabbreviations
 \AtBeginDocument{%
 \@ifpackageloaded{hyperref}{%
@@ -594,6 +602,9 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
         \string\newlabel{cat:lofflag}{{}{:~il.;}{}}}}%
   }%
 }
+
+% end symbols e abbreviations
+
 \newdimen\bibindent%
 \setlength\bibindent{1.5em}%
 \renewenvironment{thebibliography}[1]%
@@ -619,6 +630,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
        {\@latex@warning{Empty `thebibliography' environment}}%
        \on@bibEnd
       \endlist}
+
 \newenvironment{theglossary}{%
   \if@twocolumn%
     \@restonecoltrue\onecolumn%
@@ -638,6 +650,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
    \sloppy}%
   {\if@restonecol\twocolumn\fi%
 \endlist}
+
 \renewenvironment{theindex}{%
   \if@twocolumn
     \@restonecolfalse
@@ -655,12 +668,14 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \let\item\@idxitem}
   {\if@restonecol\onecolumn\else\clearpage\fi}
 \newcommand\glossaryname{Glossary}
-\newcommand\listabbreviationname{Lista de Abreviaturas}
-\newcommand\listsymbolname{Lista de S{\' i}mbolos}
-\newcommand\local@advisorstring{Orientador}
+%\newcommand\listabbreviationname{Lista de Abreviaturas}
+%\newcommand\listsymbolname{Lista de S{\' i}mbolos}
+\newcommand\local@advisorstring{Orientador(a)}
 \newcommand\foreign@advisorstring{Advisor}
-\newcommand\local@coadvisorstring{Co-orientador}
+\newcommand\local@coadvisorstring{Co-orientador(a)}
 \newcommand\foreign@coadvisorstring{Co-advisor}
+\newcommand\local@examinerstring{Examinador(a)}
+\newcommand\foreign@examinerstring{Examiner}
 \ifthenelse{\boolean{maledoc}}{%
   \newcommand\local@approvedname{Examinado por}%
 }{%
@@ -673,12 +688,12 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \newcommand\local@statename{RJ}
 \newcommand\local@countryname{Brasil}
 \newcommand\frontcover@maintext{
-  \sloppy\nohyphens{\local@doctype\ de \@degreename\
+  \sloppy\nohyphens{\local@doctype\
   \ifthenelse{\boolean{maledoc}}{apresentado}{apresentada}
   ao Programa de P{\' o}s-gradua{\c c}{\~ a}o em \local@progname\ do
   \local@universityname, como parte dos requisitos
-  necess{\' a}rios {\` a} obten{\c c}{\~ a}o do \ifthenelse{\boolean{doutboolean}}{Grau}{T{\' i}tulo}
-  de \local@degname\ em {\local@progname}.}
+  necess{\' a}rios {\` a} obten{\c c}{\~ a}o do \ifthenelse{\boolean{doutboolean}}{grau}{t{\' i}tulo}
+  de \local@degname\ em \local@progname.}
 }
 \newcommand\frontpage@maintext{
   \noindent {\MakeUppercase\local@doctype}
@@ -700,15 +715,16 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \newcommand\abstract@toptext{%
   \noindent Resumo \ifthenelse{\boolean{maledoc}}{do}{da}
   \local@doctype\ \ifthenelse{\boolean{maledoc}}{apresentado}{apresentada}
-  \sloppy\nohyphens{ao Programa de P{\' o}s-gradua{\c c}{\~ a}o em Geof{\'i}sica do Observat{\' o}rio Nacional como parte dos requisitos
+  \sloppy\nohyphens{ao Programa de P{\' o}s-gradua{\c c}{\~ a}o em \local@progname\ do Observat{\' o}rio Nacional como parte dos requisitos
   necess{\' a}rios para a obten{\c c}{\~ a}o do
   \ifthenelse{\boolean{doutboolean}}{grau}{t{\' i}tulo} de
-  \local@degname\ em {\local@progname}}
+  \local@degname\ em {\local@progname.\par}}
 }
 \newcommand\foreignabstract@toptext{%
-  \noindent \sloppy\nohyphens{Abstract of \foreign@doctype\ presented to
-  Observat{\' o}rio Nacional as a partial fulfillment of the requirements for the
-  degree of \foreign@degname\ of {\foreign@progname}}
+  \noindent Abstract of the
+  \foreign@doctype\ presented
+  \sloppy\nohyphens{to the National Observatory's Graduate Program in \foreign@progname\ as a partial fulfillment
+  of the requirements for the degree of \foreign@degname\ in {\foreign@progname.\par}}
 }
 %%
 %%

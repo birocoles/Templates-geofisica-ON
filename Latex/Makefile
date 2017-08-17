@@ -10,13 +10,13 @@
 
 # The name of the main .tex file to build.
 # Other files can be included into this one.
-PROJECT = thesis
+PROJECT = manuscript
 
 # Folder with the Latex source files
 SRC = .
 
 # Folder where the figure files are (will assume they are EPS format)
-FIGS = figures
+FIGS = Figs
 
 # Folder where the BibTex .bib files are
 BIB = .
