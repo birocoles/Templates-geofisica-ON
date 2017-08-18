@@ -48,6 +48,7 @@
 %%   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %%   Right brace   \}     Tilde         \~}
 %%
+
 \def\filename{on.dtx}
 \def\fileversion{v2.2}
 \def\filedate{2011/02/08}
@@ -73,25 +74,10 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \setboolean{maledoc}{false}
 \newboolean{doutboolean}
 \setboolean{doutboolean}{false}
-<<<<<<< HEAD:tese-dissertacao/on.cls
-\DeclareOption{report}{%
-  \newcommand{\@degree}{M.Sc. ou D.Sc.}
-  \newcommand{\@degreename}{Mestrado ou Doutorado}
-  \newcommand{\local@degname}{Mestre ou Doutor}
-  \newcommand{\foreign@degname}{Master or Doctor}
-  \setboolean{maledoc}{true}
-  \newcommand\local@doctype{Relat\' orio}
-  \newcommand\foreign@doctype{Report}
-}
-\DeclareOption{msc}{%
-  \newcommand{\foreign@degree}{M.Sc.}
-  \newcommand{\local@degree}{Me.}
-=======
 
 % relatório feito durante o mestrado
 \DeclareOption{reportm}{%
   \newcommand{\@degree}{Me.}
->>>>>>> review2017:Latex/on.cls
   \newcommand{\@degreename}{Mestrado}
   \newcommand{\local@degname}{Mestre}
   \newcommand{\foreign@degname}{Master}
@@ -152,7 +138,6 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \doublespacing
 }
 
-
 \ProcessOptions\relax
 \newcommand\program[1]{%
   \ifthenelse{\equal{#1}{ASTRO}}
@@ -163,11 +148,9 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
      \global\def\foreign@progname{Geophysics}}{}
 }
 
-
 \renewcommand\title[1]{%
   \global\def\local@title{#1}%
 }
-
 
 \newcommand\foreigntitle[1]{%
   \global\def\foreign@title{#1}%
