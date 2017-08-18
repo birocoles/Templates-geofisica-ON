@@ -63,17 +63,18 @@
 
   \maketitle
 
-  % caso seja um relatório, comente as quatro (4) próximas linhas
+  % caso seja um relatório (de exame de qualificação ou não),
+  % comente as quatro (4) próximas linhas
   %\frontmatter     % folha de rosto
   %\makecatalog     % ficha catalogŕafica
   %\include{dedic}  % dedicatória
   %\include{thanks} % agradecimentos
   
-  \include{resumo}
-  \include{abstract}
-  \tableofcontents   % sumário
-  \listoffigures     % lista de figuras (opcional)
-  \listoftables      % lista de tabelas (opcional)
+  \include{resumo}   % resumo em português - deve ser utilizado por todos os tipos de documento
+  \include{abstract} % resumo em inglês - deve ser utilizado por todos os tipos de documento
+  \tableofcontents   % sumário - deve ser utilizado por todos os tipos de documento
+  \listoffigures     % lista de figuras
+  \listoftables      % lista de tabelas
 
   % os dois comandos estão com problema e deverão ser
   % corrigidos futuramente
@@ -82,7 +83,8 @@
 
   \mainmatter
 
-  % As linhas "\include" abaixo incluem os capítulos no documento.
+  % As linhas "\include" abaixo incluem os capítulos no documento e
+  % devem ser utilizadas por todos os tipos de documento.
   % Edite os arquivos "chapxx.tex" de acordo com as suas necessidades.
   % No presente documento, são incluídos seis capítulos, mas é possível
   % utilizar quantos capítulos forem necessários.
