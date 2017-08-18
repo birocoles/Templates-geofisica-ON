@@ -1,53 +1,3 @@
-%%
-%% This is file `on.cls',
-%% generated with the docstrip utility.
-%%
-%% The original source files were:
-%%
-%% on.dtx  (with options: `class')
-%%
-%% This is the 'ON' document class used for composition of LaTeX
-%% monographs (master and PhD thesis, and PhD qualifying exams)
-%% satisfying the requirements of the CPGG-Geophysics.
-%%
-%% Copyright (C) 2014 Leandro Di Bartolo
-%%
-%% This program was developed using the COPPE codument class developed
-%% by Vicente Helano and George Ainsworth for the COPPETEX projetc
-%% website: http://coppetex.sourceforge.net/
-%%
-%% This program is free software; you can redistribute it and/or modify
-%% it under the terms of the GNU General Public License version 3 as
-%% published by the Free Software Foundation.
-%%
-%% This program is distributed in the hope that it will be useful,
-%% but WITHOUT ANY WARRANTY; without even the implied warranty of
-%% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-%% GNU General Public License version 3 for more details.
-%%
-%% You should have received a copy of the GNU General Public License
-%% version 3 along with this package (see COPYING file).
-%% If not, see <http://www.gnu.org/licenses/>.
-%%
-%% Author: Leandro Di Bartolo
-%%
-%% \CheckSum{1417}
-%% \CharacterTable
-%%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
-%%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
-%%   Digits        \0\1\2\3\4\5\6\7\8\9
-%%   Exclamation   \!     Double quote  \"     Hash (number) \#
-%%   Dollar        \$     Percent       \%     Ampersand     \&
-%%   Acute accent  \'     Left paren    \(     Right paren   \)
-%%   Asterisk      \*     Plus          \+     Comma         \,
-%%   Minus         \-     Point         \.     Solidus       \/
-%%   Colon         \:     Semicolon     \;     Less than     \<
-%%   Equals        \=     Greater than  \>     Question mark \?
-%%   Commercial at \@     Left bracket  \[     Backslash     \\
-%%   Right bracket \]     Circumflex    \^     Underscore    \_
-%%   Grave accent  \`     Left brace    \{     Vertical bar  \|
-%%   Right brace   \}     Tilde         \~}
-%%
 \def\filename{on.dtx}
 \def\fileversion{v2.2}
 \def\filedate{2011/02/08}
@@ -73,25 +23,10 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \setboolean{maledoc}{false}
 \newboolean{doutboolean}
 \setboolean{doutboolean}{false}
-<<<<<<< HEAD:tese-dissertacao/on.cls
-\DeclareOption{report}{%
-  \newcommand{\@degree}{M.Sc. ou D.Sc.}
-  \newcommand{\@degreename}{Mestrado ou Doutorado}
-  \newcommand{\local@degname}{Mestre ou Doutor}
-  \newcommand{\foreign@degname}{Master or Doctor}
-  \setboolean{maledoc}{true}
-  \newcommand\local@doctype{Relat\' orio}
-  \newcommand\foreign@doctype{Report}
-}
-\DeclareOption{msc}{%
-  \newcommand{\foreign@degree}{M.Sc.}
-  \newcommand{\local@degree}{Me.}
-=======
 
 % relatório feito durante o mestrado
 \DeclareOption{reportm}{%
   \newcommand{\@degree}{Me.}
->>>>>>> review2017:Latex/on.cls
   \newcommand{\@degreename}{Mestrado}
   \newcommand{\local@degname}{Mestre}
   \newcommand{\foreign@degname}{Master}
@@ -152,7 +87,6 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \doublespacing
 }
 
-
 \ProcessOptions\relax
 \newcommand\program[1]{%
   \ifthenelse{\equal{#1}{ASTRO}}
@@ -163,11 +97,9 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
      \global\def\foreign@progname{Geophysics}}{}
 }
 
-
 \renewcommand\title[1]{%
   \global\def\local@title{#1}%
 }
-
 
 \newcommand\foreigntitle[1]{%
   \global\def\foreign@title{#1}%
@@ -726,6 +658,3 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \sloppy\nohyphens{to the National Observatory's Graduate Program in \foreign@progname\ as a partial fulfillment
   of the requirements for the degree of \foreign@degname\ in {\foreign@progname.\par}}
 }
-%%
-%%
-%% End of file `on.cls'.
