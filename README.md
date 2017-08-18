@@ -7,6 +7,8 @@ Este template foi desenvolvido com base no projeto [**CoppeTeX**](http://coppete
 
 A pasta `Latex` contém todos os arquivos necessários para utilizar o template. A pasta `Tutorial` contém um tutorial básico que explica a estrutura dos arquivos que compõem o template, fornece algumas referências sobre LaTeX na internet e sugere programas gratuitos para compilar e editar um documento LaTeX.
 
+**Aviso Legal:** O material disponibilizado neste repositório está em constante desenvolvimento e o Observatório Nacional não tem nenhuma responsabilidade sobre o seu conteúdo.
+
 ## Licença
 
 Todo o conteúdo deste repositório está disponibilizado sob a [MIT License](https://github.com/birocoles/Templates-geofisica-ON/blob/master/LICENSE).
