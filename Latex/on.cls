@@ -53,8 +53,8 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \newcommand{\local@degname}{Doutor}
   \newcommand{\foreign@degname}{Doctor}
   \setboolean{maledoc}{true}
-  \newcommand\local@doctype{Exame de Qualifica{\c c}{\~ a}o}
-  \newcommand\foreign@doctype{Qualifying Exam}
+  \newcommand\local@doctype{Relat\'{o}rio de Exame de Qualifica{\c c}{\~ a}o}
+  \newcommand\foreign@doctype{Qualifying Exam Report}
 }
 
 % dissertação de mestrado
@@ -647,7 +647,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \newcommand\abstract@toptext{%
   \noindent Resumo \ifthenelse{\boolean{maledoc}}{do}{da}
   \local@doctype\ \ifthenelse{\boolean{maledoc}}{apresentado}{apresentada}
-  \sloppy\nohyphens{ao Programa de P{\' o}s-gradua{\c c}{\~ a}o em \local@progname\ do Observat{\' o}rio Nacional como parte dos requisitos
+  \sloppy\nohyphens{ao Programa de P{\' o}s-Gradua{\c c}{\~ a}o em \local@progname\ do Observat{\' o}rio Nacional como parte dos requisitos
   necess{\' a}rios para a obten{\c c}{\~ a}o do
   \ifthenelse{\boolean{doutboolean}}{grau}{t{\' i}tulo} de
   \local@degname\ em {\local@progname.\par}}
