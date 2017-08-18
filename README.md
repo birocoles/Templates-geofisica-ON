@@ -9,4 +9,4 @@ A pasta `Latex` contém todos os arquivos necessários para utilizar o template.
 
 ## Licença
 
-Todo o conteúdo deste repositório está disponibilizado sob a **MIT License**.
+Todo o conteúdo deste repositório está disponibilizado sob a [MIT License](https://github.com/birocoles/Templates-geofisica-ON/blob/master/LICENSE).
