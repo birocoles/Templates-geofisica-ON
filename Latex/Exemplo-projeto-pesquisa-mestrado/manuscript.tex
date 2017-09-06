@@ -1,0 +1,118 @@
+% Para definir o tipo de documento, descomente apenas
+% uma das linhas "\documentclass" abaixo
+
+% comentar uma linha significa colocar "%"
+% descomentar uma linha significa remover o "%"
+
+%\documentclass[msc]{on}     % dissertação de mestrado
+%\documentclass[dsc]{on}     % tese de doutorado
+%\documentclass[dscexam]{on} % exame de qualificação
+%\documentclass[reportd]{on} % relatório feito durante o doutorado
+%\documentclass[reportm]{on} % relatório feito durante o mestrado
+\documentclass[projm]{on} % projeto de pesquisa de mestrado
+
+% pacotes utilizados
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{hyperref}
+\usepackage{enumerate} % gerar listas numeradas
+\usepackage{graphicx}  % figuras eps
+\usepackage{epstopdf}  % figuras eps
+\usepackage{subfigure} % figuras múltimas, com (a), (b), (c), etc.
+\usepackage[table]{xcolor}  % colorir tabelas
+\usepackage{pifont} % simbolos legais
+
+% os dois comandos estão com problema e deverão ser
+% corrigidos futuramente
+%\makelosymbols
+%\makeloabbreviations
+
+\begin{document}
+
+  % Título em português
+  \title{Título}
+  
+  % Título em inglês
+  \foreigntitle{Title}
+  
+  % Autor
+  \author{Nome do(a) Autor(a)}{Sobrenome}
+
+  % Orientador(a)
+  \advisor{Dra.}{Nome da orientadora}{Sobrenome}
+  %\advisor{Dr.}{Nome do orientador}{Sobrenome}
+
+  % Co-orientadores (pode ser mais de um)
+  \coadvisor{Dra.}{Nome da Co-orientadora}{Sobrenome}
+  \coadvisor{Dr.}{Nome do Co-orientador}{Sobrenome}
+
+  % Examinadores (caso seja um relatório ou projeto de pesquisa,
+  % não modifique as linhas "\examiner")
+  \examiner{Dra.}{Nome da Examinadora}{Sobrenome}
+  \examiner{Dr.}{Nome do Examinador}{Sobrenome}
+  \examiner{Dra.}{Nome da Examinadora}{Sobrenome}
+  \examiner{Dr.}{Nome do Examinador}{Sobrenome}
+  \examiner{Dra.}{Nome da Examinadora}{Sobrenome}
+
+  % Programa de Pós-Graduação 
+  \program{GEO}
+  %\program{ASTRO}
+  
+  % Data (mês e ano)
+  \date{03}{2017}
+
+  % Palavras-chave
+  \keyword{Primeira palavra-chave}
+  \keyword{Segunda palavra-chave}
+  \keyword{Terceira palavra-chave}
+
+  \maketitle
+
+  % caso seja um relatório (de exame de qualificação ou não)
+  % ou projeto de pesquisa, mantenha as quatro (4) próximas linhas
+  % comentadas
+  %\frontmatter     % folha de rosto
+  %\makecatalog     % ficha catalogŕafica
+  %\include{dedic}  % dedicatória
+  %\include{thanks} % agradecimentos
+  
+  \include{resumo}   % resumo em português - deve ser utilizado por todos os tipos de documento
+  \include{abstract} % resumo em inglês - deve ser utilizado por todos os tipos de documento
+  \tableofcontents   % sumário - deve ser utilizado por todos os tipos de documento
+  \listoffigures     % lista de figuras
+  \listoftables      % lista de tabelas
+
+  % os dois comandos estão com problema e deverão ser
+  % corrigidos futuramente
+  %\printlosymbols
+  %\printloabbreviations
+
+  \mainmatter
+
+  % As linhas "\include" abaixo incluem os capítulos no documento e
+  % devem ser utilizadas por todos os tipos de documento.
+  % Edite os arquivos "chapxx.tex" de acordo com as suas necessidades.
+  % No presente documento, são incluídos seis capítulos, mas é possível
+  % utilizar quantos capítulos forem necessários.
+  \include{chap01}
+  \include{chap02}
+  \include{chap03}
+  \include{chap04}
+  \include{chap05}
+  \include{chap06}
+
+  \backmatter
+
+  % estilo de citações por ordem alfabética (defaut da classe ONTeX)
+  \bibliographystyle{on-plain}
+  \bibliography{references}
+
+  \appendix
+  % A linha "\include" abaixo inclui um capítulo de apêndice.
+  % Edite o arquivo "appenA.tex" de acordo com as suas necessidades.
+  % É possível incluir outros capítulos de apêndice. Para tanto,
+  % crie outros arquivos "appenX.tex", de acordo com as suas necessidades,
+  % e inclua-os no documento utilizando "\include{appenX}".
+  \include{appenA}
+
+\end{document} 
