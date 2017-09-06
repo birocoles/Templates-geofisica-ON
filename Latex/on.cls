@@ -77,6 +77,17 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \newcommand\foreign@doctype{Thesis}
 }
 
+% projeto de pesquisa de mestrado
+\DeclareOption{projm}{%
+  \newcommand{\@degree}{Me.}
+  \newcommand{\@degreename}{Mestrado}
+  \newcommand{\local@degname}{Mestre}
+  \newcommand{\foreign@degname}{Master}
+  \setboolean{maledoc}{true}
+  \newcommand\local@doctype{Projeto de pesquisa}
+  \newcommand\foreign@doctype{Research project}
+}
+
 \DeclareOption{numbers}{%
   \PassOptionsToPackage{numbers}{natbib}
 }
