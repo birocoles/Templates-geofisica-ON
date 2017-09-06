@@ -7,17 +7,20 @@
 %\documentclass[msc]{on}     % dissertação de mestrado
 %\documentclass[dsc]{on}     % tese de doutorado
 %\documentclass[dscexam]{on} % exame de qualificação
-\documentclass[reportd]{on} % relatório feito durante o doutorado
+%\documentclass[reportd]{on} % relatório feito durante o doutorado
 %\documentclass[reportm]{on} % relatório feito durante o mestrado
+\documentclass[projm]{on} % projeto de pesquisa de mestrado
 
 % pacotes utilizados
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb}
 \usepackage{hyperref}
-\usepackage{enumerate} %para gerar listas numeradas
-\usepackage{graphicx}  %para figuras eps
-\usepackage{epstopdf}
-\usepackage{subfigure} %para figuras múltimas, com (a), (b), (c), etc.
+\usepackage{enumerate} % gerar listas numeradas
+\usepackage{graphicx}  % figuras eps
+\usepackage{epstopdf}  % figuras eps
+\usepackage{subfigure} % figuras múltimas, com (a), (b), (c), etc.
+\usepackage[table]{xcolor}  % colorir tabelas
+\usepackage{pifont} % simbolos legais
 
 % os dois comandos estão com problema e deverão ser
 % corrigidos futuramente
@@ -43,7 +46,8 @@
   \coadvisor{Dra.}{Nome da Co-orientadora}{Sobrenome}
   \coadvisor{Dr.}{Nome do Co-orientador}{Sobrenome}
 
-  % Examinadores (caso seja um relatório, não modifique as linhas "\examiner")
+  % Examinadores (caso seja um relatório ou projeto de pesquisa,
+  % não modifique as linhas "\examiner")
   \examiner{Dra.}{Nome da Examinadora}{Sobrenome}
   \examiner{Dr.}{Nome do Examinador}{Sobrenome}
   \examiner{Dra.}{Nome da Examinadora}{Sobrenome}
