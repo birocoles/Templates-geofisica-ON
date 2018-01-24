@@ -172,13 +172,17 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \global\addtocounter{keywords}{1}
 }
 
+
+\pagenumbering{roman}
+\setcounter{page}{2}
+
 % begin folha de rosto
 
 \renewcommand\frontmatter{%
   \cleardoublepage
-  \pagenumbering{roman}
+  %\pagenumbering{roman}
   \thispagestyle{empty}
-  \setcounter{page}{2}
+  %\setcounter{page}{2}
   \makefrontpage
   \clearpage
   \pagestyle{plain}
