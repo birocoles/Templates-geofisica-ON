@@ -11,6 +11,17 @@ A pasta `Tutorial` contém um tutorial básico que explica a estrutura dos arqui
 
 **Aviso Legal:** O material disponibilizado neste repositório está em constante desenvolvimento e o Observatório Nacional não tem nenhuma responsabilidade sobre o seu conteúdo.
 
+## Download do template
+
+Para baixar o conteúdo do template:
+
+1. Clique no botão verde "Clone or download" localizado no canto
+direito desta página.
+
+2. Clique em "Download ZIP" (veja a figura abaixo).
+
+<img src='template_download.png' width = 500>
+
 ## Licença
 
 Todo o conteúdo deste repositório está disponibilizado sob a [MIT License](https://github.com/birocoles/Templates-geofisica-ON/blob/master/LICENSE).
