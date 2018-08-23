@@ -1,9 +1,27 @@
 \def\filename{on.dtx}
 \def\fileversion{v2.2}
 \def\filedate{2011/02/08}
+
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
+
 \ProvidesClass{on}[\filedate\ \fileversion\ ON Dissertations and Theses]
+
 \LoadClass[12pt,a4paper,oneside]{book}
+
+\RequirePackage[a4paper,bindingoffset=0.0cm,vcentering=true,%
+top=2.5cm,bottom=2.5cm,left=3.0cm,right=3.0cm]{geometry}
+\def\ONTeX{{\rm C\kern-.05em{\sc o\kern-.025em p\kern-.025em
+p\kern-.025em e}}\kern-.08em
+T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{hyperref}
+\RequirePackage{enumerate} % gerar listas numeradas
+\RequirePackage{graphicx}  % figuras eps
+\RequirePackage{epstopdf}  % figuras eps
+\RequirePackage{subfigure} % figuras múltimas, com (a), (b), (c), etc.
+\RequirePackage[table]{xcolor}  % colorir tabelas
+\RequirePackage{pifont} % simbolos legais
 \RequirePackage[sort&compress]{natbib}
 \RequirePackage{hyphenat}
 \RequirePackage{lastpage}
@@ -14,11 +32,8 @@
 \RequirePackage{tabularx}
 \RequirePackage{eqparbox}
 \RequirePackage{ltxcmds}
-\RequirePackage[a4paper,bindingoffset=0.0cm,vcentering=true,%
-top=2.5cm,bottom=2.5cm,left=3.0cm,right=3.0cm]{geometry}
-\def\ONTeX{{\rm C\kern-.05em{\sc o\kern-.025em p\kern-.025em
-p\kern-.025em e}}\kern-.08em
-T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
+
+
 \newboolean{maledoc}
 \setboolean{maledoc}{false}
 \newboolean{doutboolean}
@@ -35,6 +50,17 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \newcommand\foreign@doctype{Report}
 }
 
+% projeto de pesquisa de mestrado
+\DeclareOption{projectm}{%
+  \newcommand{\@degree}{Me.}
+  \newcommand{\@degreename}{Mestrado}
+  \newcommand{\local@degname}{Mestre}
+  \newcommand{\foreign@degname}{Master}
+  \setboolean{maledoc}{true}
+  \newcommand\local@doctype{Projeto de Pesquisa}
+  \newcommand\foreign@doctype{Research Project}
+}
+
 % relatório feito durante o doutorado
 \DeclareOption{reportd}{%
   \newcommand{\@degree}{Dr.}
@@ -44,6 +70,17 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \setboolean{maledoc}{true}
   \newcommand\local@doctype{Relat\' orio}
   \newcommand\foreign@doctype{Report}
+}
+
+% projeto de pesquisa de doutorado
+\DeclareOption{projectd}{%
+  \newcommand{\@degree}{Dr.}
+  \newcommand{\@degreename}{Doutorado}
+  \newcommand{\local@degname}{Doutor}
+  \newcommand{\foreign@degname}{Doctor}
+  \setboolean{maledoc}{true}
+  \newcommand\local@doctype{Projeto de Pesquisa}
+  \newcommand\foreign@doctype{Research Project}
 }
 
 % exame de qualificação
@@ -91,7 +128,6 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \DeclareOption{numbers}{%
   \PassOptionsToPackage{numbers}{natbib}
 }
-
 
 \onehalfspacing
 \DeclareOption{doublespacing}{%
@@ -152,10 +188,10 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \global\def\@authsurn{#2}
 }
 
-\renewcommand\date[2]{%
-  \month=#1
-  \year=#2
-}
+%\renewcommand\date[]{%
+%  \today
+%}
+
 
 \newcommand\local@monthname{\ifcase\month\or
   Janeiro\or Fevereiro\or Mar{\c c}o\or Abril\or Maio\or Junho\or
