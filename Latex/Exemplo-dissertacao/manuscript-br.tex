@@ -4,20 +4,11 @@
 % comentar uma linha significa colocar "%"
 % descomentar uma linha significa remover o "%"
 
-%\documentclass[msc]{on}     % dissertação de mestrado
+\documentclass[msc]{on}     % dissertação de mestrado
 %\documentclass[dsc]{on}     % tese de doutorado
-\documentclass[dscexam]{on} % exame de qualificação
+%\documentclass[dscexam]{on} % exame de qualificação
 %\documentclass[reportd]{on} % relatório feito durante o doutorado
 %\documentclass[reportm]{on} % relatório feito durante o mestrado
-
-% pacotes utilizados
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath,amssymb}
-\usepackage{hyperref}
-\usepackage{enumerate} %para gerar listas numeradas
-\usepackage{graphicx}  %para figuras eps
-\usepackage{epstopdf}
-\usepackage{subfigure} %para figuras múltimas, com (a), (b), (c), etc.
 
 % os dois comandos estão com problema e deverão ser
 % corrigidos futuramente
@@ -54,9 +45,6 @@
   \program{GEO}
   %\program{ASTRO}
   
-  % Data (mês e ano)
-  \date{03}{2017}
-
   % Palavras-chave
   \keyword{Primeira palavra-chave}
   \keyword{Segunda palavra-chave}
@@ -65,13 +53,18 @@
   \maketitle
 
   % caso seja um relatório, comente as quatro (4) próximas linhas
-  %\frontmatter     % folha de rosto
-  %\makecatalog     % ficha catalogŕafica
-  %\include{dedic}  % dedicatória
-  %\include{thanks} % agradecimentos
+  \frontmatter     % folha de rosto
+  \makecatalog     % ficha catalogŕafica
+  \include{dedic}  % dedicatória
+  \include{thanks} % agradecimentos
+
+  % comente as duas próximas linhas de acordo com o idioma do documento
+  %\selectlanguage{english}
+  \selectlanguage{brazil}
   
   \include{resumo}
   \include{abstract}
+
   \tableofcontents   % sumário
   \listoffigures     % lista de figuras (opcional)
   \listoftables      % lista de tabelas (opcional)
