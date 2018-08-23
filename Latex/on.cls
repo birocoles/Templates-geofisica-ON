@@ -50,6 +50,17 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \newcommand\foreign@doctype{Report}
 }
 
+% projeto de pesquisa de mestrado
+\DeclareOption{projectm}{%
+  \newcommand{\@degree}{Me.}
+  \newcommand{\@degreename}{Mestrado}
+  \newcommand{\local@degname}{Mestre}
+  \newcommand{\foreign@degname}{Master}
+  \setboolean{maledoc}{true}
+  \newcommand\local@doctype{Projeto de Pesquisa}
+  \newcommand\foreign@doctype{Research Project}
+}
+
 % relatório feito durante o doutorado
 \DeclareOption{reportd}{%
   \newcommand{\@degree}{Dr.}
@@ -59,6 +70,17 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \setboolean{maledoc}{true}
   \newcommand\local@doctype{Relat\' orio}
   \newcommand\foreign@doctype{Report}
+}
+
+% projeto de pesquisa de doutorado
+\DeclareOption{projectd}{%
+  \newcommand{\@degree}{Dr.}
+  \newcommand{\@degreename}{Doutorado}
+  \newcommand{\local@degname}{Doutor}
+  \newcommand{\foreign@degname}{Doctor}
+  \setboolean{maledoc}{true}
+  \newcommand\local@doctype{Projeto de Pesquisa}
+  \newcommand\foreign@doctype{Research Project}
 }
 
 % exame de qualificação

@@ -9,18 +9,8 @@
 %\documentclass[dscexam]{on} % exame de qualificação
 %\documentclass[reportd]{on} % relatório feito durante o doutorado
 %\documentclass[reportm]{on} % relatório feito durante o mestrado
-\documentclass[projm]{on} % projeto de pesquisa de mestrado
-
-% pacotes utilizados
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath,amssymb}
-\usepackage{hyperref}
-\usepackage{enumerate} % gerar listas numeradas
-\usepackage{graphicx}  % figuras eps
-\usepackage{epstopdf}  % figuras eps
-\usepackage{subfigure} % figuras múltimas, com (a), (b), (c), etc.
-\usepackage[table]{xcolor}  % colorir tabelas
-\usepackage{pifont} % simbolos legais
+%\documentclass[projectm]{on} % projeto de pesquisa de mestrado
+\documentclass[projectd]{on} % projeto de pesquisa de doutorado
 
 % os dois comandos estão com problema e deverão ser
 % corrigidos futuramente
@@ -46,8 +36,7 @@
   \coadvisor{Dra.}{Nome da Co-orientadora}{Sobrenome}
   \coadvisor{Dr.}{Nome do Co-orientador}{Sobrenome}
 
-  % Examinadores (caso seja um relatório ou projeto de pesquisa,
-  % não modifique as linhas "\examiner")
+  % Examinadores (caso seja um relatório, não modifique as linhas "\examiner")
   \examiner{Dra.}{Nome da Examinadora}{Sobrenome}
   \examiner{Dr.}{Nome do Examinador}{Sobrenome}
   \examiner{Dra.}{Nome da Examinadora}{Sobrenome}
@@ -58,9 +47,6 @@
   \program{GEO}
   %\program{ASTRO}
   
-  % Data (mês e ano)
-  \date{03}{2017}
-
   % Palavras-chave
   \keyword{Primeira palavra-chave}
   \keyword{Segunda palavra-chave}
@@ -68,19 +54,22 @@
 
   \maketitle
 
-  % caso seja um relatório (de exame de qualificação ou não)
-  % ou projeto de pesquisa, mantenha as quatro (4) próximas linhas
-  % comentadas
+  % caso seja um relatório, comente as quatro (4) próximas linhas
   %\frontmatter     % folha de rosto
   %\makecatalog     % ficha catalogŕafica
   %\include{dedic}  % dedicatória
   %\include{thanks} % agradecimentos
+
+  % comente as duas próximas linhas de acordo com o idioma do documento
+  %\selectlanguage{english}
+  \selectlanguage{brazil}
   
-  \include{resumo}   % resumo em português - deve ser utilizado por todos os tipos de documento
-  \include{abstract} % resumo em inglês - deve ser utilizado por todos os tipos de documento
-  \tableofcontents   % sumário - deve ser utilizado por todos os tipos de documento
-  \listoffigures     % lista de figuras
-  \listoftables      % lista de tabelas
+  \include{resumo}
+  \include{abstract}
+
+  \tableofcontents   % sumário
+  \listoffigures     % lista de figuras (opcional)
+  \listoftables      % lista de tabelas (opcional)
 
   % os dois comandos estão com problema e deverão ser
   % corrigidos futuramente
@@ -89,8 +78,7 @@
 
   \mainmatter
 
-  % As linhas "\include" abaixo incluem os capítulos no documento e
-  % devem ser utilizadas por todos os tipos de documento.
+  % As linhas "\include" abaixo incluem os capítulos no documento.
   % Edite os arquivos "chapxx.tex" de acordo com as suas necessidades.
   % No presente documento, são incluídos seis capítulos, mas é possível
   % utilizar quantos capítulos forem necessários.
