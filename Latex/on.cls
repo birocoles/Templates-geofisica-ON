@@ -33,6 +33,20 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \RequirePackage{eqparbox}
 \RequirePackage{ltxcmds}
 
+% define the color of the links
+\hypersetup{
+	% 'colorlinks = true' removes that horrible square around links
+	colorlinks = true,
+		% define color of the links related to bibliography
+    %citecolor = black,
+    % define the color of the remaining links
+    %linkcolor = black
+    % define the color of url links
+    %urlcolor = black
+    % set all links as black
+    allcolors = black
+}
+
 
 \newboolean{maledoc}
 \setboolean{maledoc}{false}
