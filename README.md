@@ -9,6 +9,8 @@ A pasta `Latex` contém todos os arquivos necessários para utilizar o template.
 
 A pasta `Tutorial` contém um tutorial básico que explica a estrutura dos arquivos que compõem o template, fornece algumas referências sobre LaTeX na internet e sugere programas gratuitos para compilar e editar um documento LaTeX.
 
+**IMPORTANTE:** OS EXEMPLOS DAS PASTAS `Exemplo-XXXX` PODEM ESTAR DESATUALIZADOS. OS ARQUIVOS DA PASTA `Latex` ESTÃO ATUALIZADOS.
+
 **Aviso Legal:** O material disponibilizado neste repositório está em constante desenvolvimento e o Observatório Nacional não tem nenhuma responsabilidade sobre o seu conteúdo.
 
 ## Download do template
