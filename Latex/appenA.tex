@@ -1,5 +1,44 @@
 \chapter{Algumas Demonstrações}
 
+\section{First section}
+
 Aqui devem entrar demonstrações mais longas, revisões de conceitos mais básicos
 ou qualquer detalhe pertinente que não seja adequado para o corpo da
 dissertação/tese.
+
+\begin{equation}
+\Gamma(x, y, z) = \int\limits_{-\infty}^{+\infty}\int\limits_{-\infty}^{+\infty}
+p(x', y', z_{c}) \, \frac{\partial}{\partial z} \frac{1}{r} \: dx' \, dy'
+\label{eq:apendice1}
+\end{equation}
+
+\section{Second section}
+
+\lipsum[3-5]
+
+\section{Third section}
+
+\begin{table}[h]
+	\caption[Cópia da tabela do capítulo 2]
+	{Cópia da tabela do capítulo 2 para ilustrar numeração no apêndice}
+	\label{tab:citation-copy}
+	\centering
+	{\footnotesize
+		\begin{tabular}{|c|c|c|}
+			\hline
+			Tipo da Publica{\c c}\~ao & \verb|\citep| & \verb|\citet|\\
+			\hline
+			Livro & \citep{book-example} & \citet{book-example}\\
+			Artigo & \citep{article-example} & \citet{article-example}\\
+			Relat\'orio & \citep{techreport-example} & \citet{techreport-example}\\
+			Relat\'orio & \citep{techreport-exampleIn} & \citet{techreport-exampleIn}\\
+			Anais de Congresso & \citep{inproceedings-example} &
+			\citet{inproceedings-example}\\
+			S\'eries & \citep{incollection-example} & \citet{incollection-example}\\
+			Em Livro & \citep{inbook-example} & \citet{inbook-example}\\
+			Disserta{\c c}\~ao de mestrado & \citep{mastersthesis-example} &
+			\citet{mastersthesis-example}\\
+			Tese de doutorado & \citep{phdthesis-example} & \citet{phdthesis-example}\\
+			\hline
+	\end{tabular}}
+\end{table}
