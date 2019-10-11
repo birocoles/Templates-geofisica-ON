@@ -67,6 +67,7 @@ wc: all
 clean::
 	rm -rf $(OUTPUT)/ *.aux
 	rm -rf $(FIGS)/*-eps-converted-to.pdf
+	rm *.aux *.bbl *.blg *.log *.pdf *.lof *.lot *.synctex.gz *.out
 
 
 # BUILD THE SOURCES

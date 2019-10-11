@@ -1,13 +1,9 @@
-\def\filename{on.dtx}
-\def\fileversion{v2.2}
-\def\filedate{2011/02/08}
-
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-
-\ProvidesClass{on}[\filedate\ \fileversion\ ON Dissertations and Theses]
+\ProvidesClass{on}[2019/10/11 ON class for academic documents]
 
 \LoadClass[12pt,a4paper,oneside]{book}
 
+% Required packages
 \RequirePackage[a4paper,bindingoffset=0.0cm,vcentering=true,%
 top=2.5cm,bottom=2.5cm,left=3.0cm,right=3.0cm]{geometry}
 \def\ONTeX{{\rm C\kern-.05em{\sc o\kern-.025em p\kern-.025em
@@ -32,6 +28,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \RequirePackage{tabularx}
 \RequirePackage{eqparbox}
 \RequirePackage{ltxcmds}
+\RequirePackage{lipsum}
 
 % define the color of the links
 \hypersetup{
@@ -433,6 +430,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 
 % end ficha catalográfica
 
+% dedicatória
 \newcommand\dedication[1]{
   \gdef\@dedic{#1}
     \cleardoublepage
@@ -443,6 +441,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
       \end{minipage}
     \end{flushright}}
 
+% resumo
 \newenvironment{abstract}{%
   \clearpage
   \thispagestyle{plain}
@@ -457,6 +456,8 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \end{center}\par
 
   \vspace*{7mm}}{\vspace*{\fill}}
+
+% resumo em inglês
 \newenvironment{foreignabstract}{%
   \clearpage
   \thispagestyle{plain}
@@ -484,92 +485,93 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \global\let\date\relax}
   
 
-\renewcommand\listoffigures{%
-    \on@hasLof
-    \if@twocolumn
-      \@restonecoltrue\onecolumn
-    \else
-      \@restonecolfalse
-    \fi
-    \chapter*{\listfigurename}%
-      \addcontentsline{toc}{chapter}{\listfigurename}%
-      \@mkboth{\MakeUppercase\listfigurename}%
-              {\MakeUppercase\listfigurename}%
-    \@starttoc{lof}%
-    \if@restonecol\twocolumn\fi
-    }
+%\renewcommand\listoffigures{%
+%    \on@hasLof
+%    \if@twocolumn
+%      \@restonecoltrue\onecolumn
+%    \else
+%      \@restonecolfalse
+%    \fi
+%    \chapter*{\listfigurename}%
+%      \addcontentsline{toc}{chapter}{\listfigurename}%
+%      \@mkboth{\MakeUppercase\listfigurename}%
+%              {\MakeUppercase\listfigurename}%
+%    \@starttoc{lof}%
+%    \if@restonecol\twocolumn\fi
+%    }
 
-\renewcommand\listoftables{%
-    \if@twocolumn
-      \@restonecoltrue\onecolumn
-    \else
-      \@restonecolfalse
-    \fi
-    \chapter*{\listtablename}%
-      \addcontentsline{toc}{chapter}{\listtablename}%
-      \@mkboth{%
-          \MakeUppercase\listtablename}%
-         {\MakeUppercase\listtablename}%
-    \@starttoc{lot}%
-    \if@restonecol\twocolumn\fi
-    }
+%\renewcommand\listoftables{%
+%    \if@twocolumn
+%      \@restonecoltrue\onecolumn
+%    \else
+%      \@restonecolfalse
+%    \fi
+%    \chapter*{\listtablename}%
+%      \addcontentsline{toc}{chapter}{\listtablename}%
+%      \@mkboth{%
+%          \MakeUppercase\listtablename}%
+%         {\MakeUppercase\listtablename}%
+%    \@starttoc{lot}%
+%    \if@restonecol\twocolumn\fi
+%    }
     
    
 % begin symbols e abbreviations
 
-\newcommand\printlosymbols{%
-\renewcommand\glossaryname{\listsymbolname}%
-\@input@{\jobname.los}}
-\def\makelosymbols{%
-  \newwrite\@losfile
-  \immediate\openout\@losfile=\jobname.syx
-  \def\symbl{\@bsphack\begingroup
-             \@sanitize
-             \@wrlos}\typeout
-  {Writing index of symbols file \jobname.syx}%
-  \let\makelosymbols\@empty
-}
+%\newcommand\printlosymbols{%
+%\renewcommand\glossaryname{\listsymbolname}%
+%\@input@{\jobname.los}}
+%\def\makelosymbols{%
+%  \newwrite\@losfile
+%  \immediate\openout\@losfile=\jobname.syx
+%  \def\symbl{\@bsphack\begingroup
+%             \@sanitize
+%             \@wrlos}\typeout
+%  {Writing index of symbols file \jobname.syx}%
+%  \let\makelosymbols\@empty
+%}
+%
+%\@onlypreamble\makelosymbols
+%\AtBeginDocument{%
+%\@ifpackageloaded{hyperref}{%
+%  \def\@wrlos#1#2{%
+%    \protected@write\@losfile{}%
+%      {\string\indexentry{[#1] #2|hyperpage}{\thepage}}%
+%    \endgroup
+%    \@esphack}}{%
+%  \def\@wrlos#1#2{%
+%    \protected@write\@losfile{}%
+%      {\string\indexentry{[#1] #2}{\thepage}}%
+%    \endgroup
+%    \@esphack}}}
+%
+%\newcommand\printloabbreviations{%
+%\renewcommand\glossaryname{\listabbrevname}%
+%\@input@{\jobname.lab}}
+%\def\makeloabbreviations{%
+%  \newwrite\@labfile
+%  \immediate\openout\@labfile=\jobname.abx
+%  \def\abbrev{\@bsphack\begingroup
+%              \@sanitize
+%              \@wrlab}\typeout
+%  {Writing index of abbreviations file \jobname.abx}%
+%  \let\makeloabbreviations\@empty
+%}
+%
+%\@onlypreamble\makeloabbreviations
+%\AtBeginDocument{%
+%\@ifpackageloaded{hyperref}{%
+%  \def\@wrlab#1#2{%
+%    \protected@write\@labfile{}%
+%      {\string\indexentry{[#1] #2|hyperpage}{\thepage}}%
+%    \endgroup
+%    \@esphack}}{%
+%  \def\@wrlab#1#2{%
+%    \protected@write\@labfile{}%
+%      {\string\indexentry{[#1] #2}{\arabic{page}}}%
+%    \endgroup
+%    \@esphack}}}
 
-\@onlypreamble\makelosymbols
-\AtBeginDocument{%
-\@ifpackageloaded{hyperref}{%
-  \def\@wrlos#1#2{%
-    \protected@write\@losfile{}%
-      {\string\indexentry{[#1] #2|hyperpage}{\thepage}}%
-    \endgroup
-    \@esphack}}{%
-  \def\@wrlos#1#2{%
-    \protected@write\@losfile{}%
-      {\string\indexentry{[#1] #2}{\thepage}}%
-    \endgroup
-    \@esphack}}}
-
-\newcommand\printloabbreviations{%
-\renewcommand\glossaryname{\listabbrevname}%
-\@input@{\jobname.lab}}
-\def\makeloabbreviations{%
-  \newwrite\@labfile
-  \immediate\openout\@labfile=\jobname.abx
-  \def\abbrev{\@bsphack\begingroup
-              \@sanitize
-              \@wrlab}\typeout
-  {Writing index of abbreviations file \jobname.abx}%
-  \let\makeloabbreviations\@empty
-}
-
-\@onlypreamble\makeloabbreviations
-\AtBeginDocument{%
-\@ifpackageloaded{hyperref}{%
-  \def\@wrlab#1#2{%
-    \protected@write\@labfile{}%
-      {\string\indexentry{[#1] #2|hyperpage}{\thepage}}%
-    \endgroup
-    \@esphack}}{%
-  \def\@wrlab#1#2{%
-    \protected@write\@labfile{}%
-      {\string\indexentry{[#1] #2}{\arabic{page}}}%
-    \endgroup
-    \@esphack}}}
 \AtBeginDocument{%
   \ltx@ifpackageloaded{hyperref}{
     \def\on@bibEnd{%
@@ -664,9 +666,12 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \columnsep 35\p@
   \let\item\@idxitem}
   {\if@restonecol\onecolumn\else\clearpage\fi}
+
 \newcommand\glossaryname{Glossary}
+
 %\newcommand\listabbreviationname{Lista de Abreviaturas}
 %\newcommand\listsymbolname{Lista de S{\' i}mbolos}
+
 \newcommand\local@advisorstring{Orientador(a)}
 \newcommand\foreign@advisorstring{Advisor}
 \newcommand\local@coadvisorstring{Co-orientador(a)}
@@ -723,3 +728,16 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \sloppy\nohyphens{to the National Observatory's Graduate Program in \foreign@progname\ as a partial fulfillment
   of the requirements for the degree of \foreign@degname\ in {\foreign@progname.\par}}
 }
+
+% enumera o(s) apêndice(s)
+\newcommand\appendix@chapter[1]{%
+	\refstepcounter{chapter}%
+	%\def\app@ct{Appendix \@Alph\c@chapter\\ #1}
+	\def\app@ct{\@Alph\c@chapter}
+	\orig@chapter*{Appendix \app@ct\\ #1}%
+	\markboth{\MakeUppercase{\app@ct}}{\MakeUppercase{\app@ct}}
+	\addcontentsline{toc}{chapter}{\app@ct: #1}%
+}
+\let\orig@chapter\chapter
+\g@addto@macro\appendix{\let\chapter\appendix@chapter}
+\makeatother
